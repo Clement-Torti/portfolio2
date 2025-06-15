@@ -117,7 +117,7 @@
                                 <a class="btn btn-main wow fadeInUp mt-5 pt-4 pb-4" style="z-index: 10;" data-wow-delay=".6s" href="pdf/CV.pdf" download target="_blank">Download my CV (pdf)</a>
                             </div>
                             <div class="col-md-6 offset-md-1 jarallax">
-                                <img src="images/misc/clement3.png" class="img-fluid wow fadeInUp" data-wow-delay=".8s" alt="" >
+                                <img src="images/misc/clement4.png" class="img-fluid wow fadeInUp" data-wow-delay=".8s" alt="" >
                             </div>
                         </div>
                     </div>
@@ -178,42 +178,65 @@
                 </div>
             </section>
 
-            <div id="wrapper" style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            "> 
-                <video class="mt-5 mb-5" id="videoPlayer" controls style="height: 80vh; width: 45vh; border-radius: 20px; border-style: solid; border-color: #CB7C6F; border-width: 3px; box-shadow: 7px 7px 1px rgba(0, 0, 0, 1); ">
-                    <source src="video/maserati.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var div = document.getElementById('wrapper');
-                        var videoPlayer = document.getElementById('videoPlayer');
-                        var playVideoLink = document.getElementById('playVideoLink');
-                        playVideoLink.addEventListener('click', function(event) {
-                            //event.preventDefault(); 
-                            div.style.display = 'block';
-                            div.style.width = '100%';
-                            videoPlayer.style.display = 'block';
-                            videoPlayer.play();
-                            var rect = videoPlayer.getBoundingClientRect();
-                            var videoTop = rect.top + window.scrollY;
-                            var videoHeight = rect.height;
-                            
-                            var scrollPosition = videoTop - (window.innerHeight - videoHeight) / 2;
-                            
-                            window.scrollTo({
-                                top: scrollPosition,
-                                behavior: 'smooth'
-                            });
-                        });
-                    });
-                    </script>
-            </div>
-
+            <section id="section-resume">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>Mi Currículum</h2>
+                            <div class="space-border"></div>
+                        </div>
+                    </div>
+                    <div class="row gh-5">
+                        <div class="col-lg-6 wow fadeInUp">
+                            <div class="p-4">
+                                <h3 class="s_border">Experiencia</h3>
+                                <ul class="d_timeline">
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">febrero 2024 - julio 2024</h3>
+                                        <a href="https://boxxrd.com/" target="_blank">                                        
+                                            <img class="mt-3 ml-5"  src="images/experience/boxx.png" style="max-width: 200px;" class="img-fluid" alt="">
+                                        </a>
+                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Content Creator</span>
+                                            <a href="https://boxxrd.com/" target="_blank"><span class="d_company">Boxxrd</span></a>
+                                            Grupo empresarial que ofrece soluciones digitales para potenciar el comercio de sus clientes y su presencia en línea. <br/>
+                                            Misiones:<br/>
+                                        - Crear contenido para una decena de cuentas en Instagram y Facebook.<br/>
+                                        - Interactuar con los usuarios respondiendo a sus mensajes y comentarios.<br/>
+                                        - Asistir a eventos y sesiones de fotos para cada marca.
+                                        </p>                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp">
+                            <div class="p-4">
+                                <h3 class="s_border">Educación</h3>
+                                <ul class="d_timeline">
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">2022 - ahora</h3>
+                                        <a class="m-5" href="https://www.utesa.edu/santiago/economicas-sociales.php?v=6#:~:text=La%20Carrera%20de%20Mercadeo%20representa,su%20crecimiento%20y%20desarrollo%20sostenible." target="_blank">                                        
+                                            <img class="mt-2" src="images/experience/utesa-school.jpeg" style="max-width: 400px;border-radius: 10px;" class="img-fluid" alt="">
+                                        </a>
+                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Grado en Mercadeo</span>
+                                            <a href="https://www.utesa.edu/santiago/economicas-sociales.php?v=6#:~:text=La%20Carrera%20de%20Mercadeo%20representa,su%20crecimiento%20y%20desarrollo%20sostenible." target="_blank">                                       
+                                                <span class="d_company">Universidad Tecnológica de Santiago - UTESA</span>
+                                                </a>
+                                                    Universidad reconocida en pleno Santo Domingo. La carrera de mercadeo se enfoca en técnicas y gerencia de ventas, abordando conceptos clave del marketing como la ley de la oferta y la demanda, así como la micro y macroeconomía, junto con la diversidad de tipos de clientes. Esta formación también me brindó un conocimiento general en contabilidad, así como sólidas bases en matemáticas e informática.
+                                        </p>
+                                    </li>
+                                    
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">2018 - 2021</h3>
+                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Bachiller técnico en Producción y Realización de Audivisuales</span><span class="d_company">Centro de excelencia prof.Cristina Billini Morales - Santo Domingo</span>Graduada con honores académicos.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+
             <section id="section-portfolio" class="no-bottom">
                 <div class="container relative">
                     <div class="row">
@@ -328,63 +351,9 @@
                     </div>
                 </div>
             </section>
-            <section id="section-resume">
-                <div class="container relative">
-                    <div class="row">
-                        <div class="col-md-12 text-center wow fadeInUp">
-                            <h2>Mi Currículum</h2>
-                            <div class="space-border"></div>
-                        </div>
-                    </div>
-                    <div class="row gh-5">
-                        <div class="col-lg-6 wow fadeInUp">
-                            <div class="p-4">
-                                <h3 class="s_border">Experiencia</h3>
-                                <ul class="d_timeline">
-                                    <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">febrero 2024 - julio 2024</h3>
-                                        <a href="https://boxxrd.com/" target="_blank">                                        
-                                            <img class="mt-3 ml-5"  src="images/experience/boxx.png" style="max-width: 200px;" class="img-fluid" alt="">
-                                        </a>
-                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Content Creator</span>
-                                            <a href="https://boxxrd.com/" target="_blank"><span class="d_company">Boxxrd</span></a>
-                                            Grupo empresarial que ofrece soluciones digitales para potenciar el comercio de sus clientes y su presencia en línea. <br/>
-                                            Misiones:<br/>
-                                        - Crear contenido para una decena de cuentas en Instagram y Facebook.<br/>
-                                        - Interactuar con los usuarios respondiendo a sus mensajes y comentarios.<br/>
-                                        - Asistir a eventos y sesiones de fotos para cada marca.
-                                        </p>                                        
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeInUp">
-                            <div class="p-4">
-                                <h3 class="s_border">Educación</h3>
-                                <ul class="d_timeline">
-                                    <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">2022 - ahora</h3>
-                                        <a class="m-5" href="https://www.utesa.edu/santiago/economicas-sociales.php?v=6#:~:text=La%20Carrera%20de%20Mercadeo%20representa,su%20crecimiento%20y%20desarrollo%20sostenible." target="_blank">                                        
-                                            <img class="mt-2" src="images/experience/utesa-school.jpeg" style="max-width: 400px;border-radius: 10px;" class="img-fluid" alt="">
-                                        </a>
-                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Grado en Mercadeo</span>
-                                            <a href="https://www.utesa.edu/santiago/economicas-sociales.php?v=6#:~:text=La%20Carrera%20de%20Mercadeo%20representa,su%20crecimiento%20y%20desarrollo%20sostenible." target="_blank">                                       
-                                                <span class="d_company">Universidad Tecnológica de Santiago - UTESA</span>
-                                                </a>
-                                                    Universidad reconocida en pleno Santo Domingo. La carrera de mercadeo se enfoca en técnicas y gerencia de ventas, abordando conceptos clave del marketing como la ley de la oferta y la demanda, así como la micro y macroeconomía, junto con la diversidad de tipos de clientes. Esta formación también me brindó un conocimiento general en contabilidad, así como sólidas bases en matemáticas e informática.
-                                        </p>
-                                    </li>
-                                    
-                                    <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">2018 - 2021</h3>
-                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">Bachiller técnico en Producción y Realización de Audivisuales</span><span class="d_company">Centro de excelencia prof.Cristina Billini Morales - Santo Domingo</span>Graduada con honores académicos.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
+
+            
             <section id="section-about" class="no-bottom">
                 <div class="container relative">
                     <div class="row align-items-center">
