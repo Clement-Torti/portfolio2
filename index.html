@@ -20,6 +20,116 @@
             --primary-color: rgb(129, 73, 0);
             --primary-color-rgb: 165, 110, 90;
         }
+
+          /* Styles for the new module section */
+        .modules-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 8px;
+        }
+
+        .dark-scheme .modules-container {
+             background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .module-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .module-filter-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-scheme .module-filter-btn {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            color: #eee;
+        }
+
+        .module-filter-btn:hover {
+            background-color: #e0e0e0;
+            border-color: #ccc;
+        }
+
+        .module-filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .module-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-scheme .module-card {
+            background: #2c2c2c;
+            border-color: #444;
+        }
+
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-card h5 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .dark-scheme .module-card h5 {
+            color: #eee;
+        }
+
+        .module-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 15px;
+            text-align: justify;
+            max-height: 120px; /* Adjust this value as needed */
+            overflow-y: auto; /* Adds a scrollbar when content is too long */
+            padding-right: 10px; /* To prevent scrollbar from overlapping text */
+        }
+
+        .module-card .duration {
+            font-size: 12px;
+            font-weight: 600;
+            color: #888;
+            margin-top: auto;
+        }
+
+        .dark-scheme .module-card .duration {
+            color: #aaa;
+        }
     </style>
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
 </head>
@@ -413,6 +523,8 @@
                                             </a>
                                             UCM Madrid offers a prestigious Master's program in Computer Science. Located in Madrid, Spain, it provides a comprehensive curriculum covering theoretical knowledge and practical applications. Students gain advanced skills in software development, algorithms, AI, and data analysis. UCM's cutting-edge facilities and industry collaborations create an ideal learning environment.
                                         </p>
+                                        <div id="ucm-modules-container" class="d_timeline-text"></div>
+
                                     </li>
 
                                     <li class="d_timeline-item">
@@ -427,6 +539,7 @@
                                             </a>
                                             Recognized as the 2nd best computer science engineering school in France, ENSEEIHT Toulouse offers a prestigious program through alternating work-study. Students develop technical skills in software development, algorithms, AI, and data analysis. Hands-on projects and internships prepare future engineers for success in the dynamic field of IT.
                                         </p>
+                                        <div id="enseeiht-modules-container" class="d_timeline-text"></div>
                                     </li>
 
                                     <li class="d_timeline-item">
@@ -441,6 +554,7 @@
                                             </a>
                                             IUT Clermont-Ferrand is known for its excellent computer science training. Located in Aubière, France, it offers a practical curriculum aligned with industry trends. Students gain expertise in programming, web/mobile development, databases, networks, and information systems. Hands-on projects and internships foster a dynamic learning experience.
                                         </p>
+                                        <div id="iut-modules-container" class="d_timeline-text"></div>
                                     </li>
 
                                 </ul>
@@ -571,6 +685,270 @@
 
     const currentYear = new Date().getFullYear();
     document.getElementById("currentYear").textContent = currentYear;
+
+
+     const SchoolCategory = {
+        IUT: 'IUT',
+        ENSEEIHT: 'ENSEEIHT',
+        UCM: 'UCM',
+        BOOK: 'BOOK',
+        ONLINE: 'ONLINE',
+    };
+
+    const ModuleCategory = {
+        PROGRAMMING: 'Programming',
+        MATH: 'Math',
+        WEB: 'Web',
+        MANAGEMENT: 'Management',
+        NETWORKING: 'Networking',
+        DATABASE: 'Database',
+        ALGORITHM: 'Algorithm',
+        SYSTEM: 'System',
+        SOFT_SKILL: 'Soft Skill',
+        ENGINEERING_TOOLS: 'Engineering Tools'
+    };
+    
+    // Simplified Module class for demonstration
+    class Module {
+        constructor(name, schoolCategory, duration, description, teachers, moduleCategory) {
+            this.name = name;
+            this.schoolCategory = schoolCategory;
+            this.duration = duration;
+            this.description = description;
+            this.teachers = teachers;
+            this.moduleCategory = moduleCategory;
+        }
+    }
+
+    const MOCKED_MODULES = [
+        // IUT
+        new Module('Databases', SchoolCategory.IUT, '4 months', 'This module introduces the principles of database design and management, including data modeling, relational databases, SQL querying, and database administration.', [], ModuleCategory.DATABASE),
+        new Module('Architecture', SchoolCategory.IUT, '4 months', 'This module explores computer architecture principles, including the organization and design of computer systems, instruction set architecture, memory hierarchy, and input/output systems.', [], ModuleCategory.SYSTEM),
+        new Module('Algorithms', SchoolCategory.IUT, '4 months', 'This module explores fundamental algorithms and data structures, covering topics such as sorting, searching, graph algorithms, and dynamic programming.', [], ModuleCategory.PROGRAMMING),
+        new Module('Arithmetic', SchoolCategory.IUT, '4 months', 'This module focuses on arithmetic operations, number systems, algorithms, and mathematical problem-solving techniques.', [], ModuleCategory.MATH),
+        new Module('Documentation & Interface (HTML & CSS)', SchoolCategory.IUT, '4 months', 'This module introduces the fundamentals of HTML and CSS, teaching students how to create well-structured and visually appealing web pages.', [], ModuleCategory.WEB),
+        new Module('Software Economics', SchoolCategory.IUT, '4 months', 'This module covers the economic aspects of software development, including cost estimation, project planning, budgeting, and software pricing strategies.', [], ModuleCategory.MANAGEMENT),
+        new Module('Information Systems', SchoolCategory.IUT, '4 months', 'This module explores the design, implementation, and management of information systems, covering topics such as database systems, data modeling, and system integration.', [], ModuleCategory.NETWORKING),
+        new Module('Linear Algebra', SchoolCategory.IUT, '4 months', 'This module covers the fundamental concepts and techniques of linear algebra, including vector spaces, matrices, systems of linear equations, and linear transformations.', [], ModuleCategory.MATH),
+        new Module('Business Management', SchoolCategory.IUT, '4 months', 'This module provides an overview of business management principles and practices, covering topics such as organizational behavior, strategic planning, marketing, and financial management.', [], ModuleCategory.MANAGEMENT),
+        new Module('Data Structures', SchoolCategory.IUT, '4 months', 'This module focuses on the implementation and analysis of fundamental data structures, such as arrays, linked lists, stacks, queues, trees, and graphs, along with algorithms for efficient data manipulation and retrieval.', [], ModuleCategory.ALGORITHM),
+        new Module('Budget Management', SchoolCategory.IUT, '4 months', 'This module focuses on budget planning, financial analysis, cost control, and resource allocation techniques to effectively manage budgets in organizational settings.', [], ModuleCategory.MANAGEMENT),
+        new Module('Graphs & Automata', SchoolCategory.IUT, '4 months', 'This module covers graph theory and automata theory, including graph algorithms, connectivity, shortest paths, regular languages, finite automata, and formal language theory.', [], ModuleCategory.ALGORITHM),
+        new Module('Object-oriented Programming', SchoolCategory.IUT, '4 months', 'This module introduces the principles and concepts of object-oriented programming, including encapsulation, inheritance, polymorphism, and design patterns, using a programming language such as Java or C++.', [], ModuleCategory.PROGRAMMING),
+        new Module('Analysis & Numerical Methods', SchoolCategory.IUT, '4 months', 'This module focuses on mathematical analysis techniques, including limits, derivatives, integrals, numerical methods, and approximation algorithms, to solve mathematical problems and analyze real-world phenomena.', [], ModuleCategory.MATH),
+        new Module('Object-Oriented Programming and Human-Computer Interaction', SchoolCategory.IUT, '4 months', 'This module combines the principles of object-oriented programming with the fundamentals of human-computer interaction, covering topics such as user interface design, usability testing, event-driven programming, and graphical user interface development.', [], ModuleCategory.PROGRAMMING),
+        new Module('Labor Law', SchoolCategory.IUT, '4 months', 'This module provides an overview of labor law principles and regulations, focusing on topics such as employment contracts, worker rights, labor disputes, occupational health and safety, and legal considerations in the workplace.', [], ModuleCategory.SOFT_SKILL),
+        new Module('Project Management', SchoolCategory.IUT, '4 months', 'This module covers the principles and practices of project management, including project planning, scheduling, resource management, risk assessment, team coordination, and project evaluation techniques.', [], ModuleCategory.MANAGEMENT),
+        new Module('Advanced Algorithms', SchoolCategory.IUT, '4 months', 'This module explores advanced algorithm design and analysis techniques, including divide and conquer, greedy algorithms, dynamic programming, network flows, NP-completeness, and approximation algorithms.', [], ModuleCategory.ALGORITHM),
+        new Module('Advanced Databases', SchoolCategory.IUT, '4 months', 'This module delves deeper into database concepts, focusing on advanced topics such as advanced SQL queries, database optimization, indexing techniques, database security, distributed databases, and data warehousing.', [], ModuleCategory.DATABASE),
+        new Module('Probability and Statistics', SchoolCategory.IUT, '4 months', 'This module introduces the fundamental principles of probability theory and statistical analysis, covering topics such as probability distributions, hypothesis testing, regression analysis, probability models, and statistical inference.', [], ModuleCategory.MATH),
+        new Module('Network Services', SchoolCategory.IUT, '4 months', 'This module explores network services and protocols, covering topics such as network architecture, routing, switching, DNS, DHCP, FTP, email services, web services, network security, and network performance optimization.', [], ModuleCategory.NETWORKING),
+        new Module('Industrial Strategies', SchoolCategory.IUT, '4 months', 'This module focuses on understanding and analyzing industrial strategies in the context of business environments, including strategic planning, competitive analysis, market research, product positioning, and business development strategies.', [], ModuleCategory.SOFT_SKILL),
+        new Module('ICT Law', SchoolCategory.IUT, '4 months', 'This module provides an overview of legal and ethical considerations in the field of information and communication technology (ICT), including intellectual property rights, privacy laws, data protection regulations, cybersecurity, and ethical practices in ICT.', [], ModuleCategory.SOFT_SKILL),
+        new Module('Project Management 2', SchoolCategory.IUT, '4 months', 'This module builds upon the principles learned in the initial project management module, delving deeper into advanced project management techniques, including project risk management, agile methodologies, project quality assurance, and project monitoring and control.', [], ModuleCategory.MANAGEMENT),
+        new Module('Mathematical Modeling', SchoolCategory.IUT, '4 months', 'This module focuses on mathematical modeling techniques to represent and solve real-world problems, covering topics such as differential equations, optimization, discrete modeling, statistical modeling, and computational simulation methods.', [], ModuleCategory.MATH),
+        new Module('Advanced Object-Oriented Programming (JavaFX)', SchoolCategory.IUT, '4 months', 'This module focuses on advanced concepts of object-oriented programming using JavaFX, covering topics such as graphical user interface (GUI) development, event handling, multimedia integration, animations, and advanced application design patterns.', [], ModuleCategory.PROGRAMMING),
+        new Module('Operating System Programming', SchoolCategory.IUT, '4 months', 'This module explores the principles of operating system design and implementation, covering topics such as process management, memory management, file systems, device drivers, inter-process communication, and system-level programming using languages like C or C++.', [], ModuleCategory.SYSTEM),
+        new Module('Server-Side Web Programming', SchoolCategory.IUT, '4 months', 'This module focuses on server-side web development techniques, covering topics such as web application architecture, server-side scripting languages (PHP), database integration, security considerations, and web service APIs.', [], ModuleCategory.WEB),
+        new Module('Entrepreneurship Workshop', SchoolCategory.IUT, '4 months', 'This module provides practical knowledge and skills necessary for entrepreneurship, including idea generation, business planning, marketing strategies, financial management, legal aspects, and startup funding.', [], ModuleCategory.SOFT_SKILL),
+        new Module('C++', SchoolCategory.IUT, '4 months', 'This module introduces the C++ programming language, covering topics such as syntax and semantics, object-oriented programming concepts, memory management, file handling, templates, and advanced features like exception handling and multithreading.', [], ModuleCategory.PROGRAMMING),
+        new Module('Linear Algebra / Analysis of Algorithm Complexity', SchoolCategory.IUT, '4 months', 'This module covers two key areas: linear algebra and the analysis of algorithm complexity. Topics include matrix operations, vector spaces, eigenvalues and eigenvectors, algorithmic analysis, time complexity, space complexity, and Big O notation.', [], ModuleCategory.MATH),
+        new Module('Interpreted Object-Oriented Programming', SchoolCategory.IUT, '4 months', 'This module explores interpreted object-oriented programming languages, such as Python or Ruby, focusing on language features, dynamic typing, metaprogramming, script development, and the integration of object-oriented principles in interpreted environments.', [], ModuleCategory.PROGRAMMING),
+        new Module('Mobile Programming', SchoolCategory.IUT, '4 months', 'This module focuses on mobile application development, covering topics such as mobile platforms (Android or iOS), user interface design, application lifecycle, data storage, network communication, and mobile app deployment.', [], ModuleCategory.PROGRAMMING),
+        new Module('Virtual Reality', SchoolCategory.IUT, '4 months', 'This module explores the principles and techniques of virtual reality (VR) development, covering topics such as VR hardware, 3D modeling and rendering, user interaction, immersive experiences, VR programming frameworks, and VR application design considerations.', [], ModuleCategory.PROGRAMMING),
+        new Module('English', SchoolCategory.IUT, '5 years', 'This module aims to enhance English language skills, including reading, writing, listening, and speaking. Topics may include vocabulary expansion, grammar review, comprehension exercises, oral presentations, and communication strategies.', [], ModuleCategory.SOFT_SKILL),
+        new Module('Expression & Professional Presentation', SchoolCategory.IUT, '2 years', 'This module focuses on developing effective communication and presentation skills for professional settings. Topics include public speaking, effective writing, persuasive techniques, visual aids, body language, and professional etiquette.', [], ModuleCategory.SOFT_SKILL),
+
+        // ENSEEIHT
+        new Module('Database', SchoolCategory.ENSEEIHT, '1 semester', 'introduce the basic concepts necessary for the rigorous design of databases. Skills acquired: good grasp of the basic concepts of database design.<br/>Sequence 1: Conceptual modelling and relational databases<br/>Session 2. Case study<br/>Sequence 3. The SQL language<br/>Sequence 4. Transaction management.', ['Mr Yamine'], ModuleCategory.DATABASE),
+        new Module('Computer architecture', SchoolCategory.ENSEEIHT, '1 semester', 'Chapter I: General Principles<br/>Chapter II: Elements of Combinational Logic<br/>Chapter III: Binary Arithmetic<br/>Chapter IV: Elements of Sequential Logic<br/>Chapter V: Programming the 32-bit CRAPS/SPARC Processor<br/>Chapter VI: Performance Enhancement<br/>Chapter VII: CRAPS: Programmer\'s Guide.', ['Jean-Christophe BUISSON'], ModuleCategory.SYSTEM),
+        new Module('Probability', SchoolCategory.ENSEEIHT, '1 semester', 'Learned: Elements of probability calculus, Real random variables, Real random vectors, Limit theorems.', ['Martial Coulon'], ModuleCategory.MATH),
+        new Module('Automata', SchoolCategory.ENSEEIHT, '1 semester', 'This module covers the introduction, examples, and formalization of Finite Deterministic Automata (FDAs), modeling, determinization, properties of rational languages, minimization, regular expressions to automata conversion, and regular expressions to automata using morphological method and derivations, along with two regular expression tutorials.', ['Meriem Ouederni'], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Graph Theory', SchoolCategory.ENSEEIHT, '1 semester', 'This module explores the fundamentals and applications of graph theory, covering topics such as graph representation, connectivity, shortest paths, spanning trees, and graph algorithms.', ['Gentian Jakllari'], ModuleCategory.ALGORITHM),
+        new Module('Network Performance Evaluation', SchoolCategory.ENSEEIHT, '1 semester', 'Learned to assess and optimize network performance through measuring metrics, identifying bottlenecks, analyzing traffic patterns, and utilizing diagnostic tools for efficient system functioning', ['André-Luc Beylot'], ModuleCategory.NETWORKING),
+        new Module('Programming methodology', SchoolCategory.ENSEEIHT, '1 semester', 'The Programming Methodology UE aims to train students in rigorous design and programming. It is a methodology course. This course uses the ADA programming language as a support.', ['Yamine AIT AMEUR', 'Neeraj SINGH'], ModuleCategory.PROGRAMMING),
+        new Module('Functional Programming', SchoolCategory.ENSEEIHT, '1 semester', "Introduction to functional programming principles, covering topics such as higher-order functions, recursion, immutability, and type inference. Learned to write concise and modular code using OCaml's features, including algebraic data types and polymorphism.", ['Aurélie Hurault'], ModuleCategory.PROGRAMMING),
+        new Module('Internet Applications', SchoolCategory.ENSEEIHT, '1 semester', 'Intermediate usage of Node.js and Javascript, Understanding of the DOM and usage of its API, Intermediate usage of HTML, Intermediate usage of CSS, Usage of JSON and Markdown, Understanding of HTTP, REST, and Websocket protocols, Usage of a query-builder (Knex), Usage of the FeathersJS application server to create a REST or real-time backend, Intermediate usage of VueJS 3 to create a frontend, Deployment on a virtual private server (Nginx, PM2)', ['JC Buisson'], ModuleCategory.WEB),
+        new Module('Model-Driven Engineering (MDE)', SchoolCategory.ENSEEIHT, '1 semester', 'Software development approach that places abstract models at the core of the development process, enabling the automatic generation of code and other software artifacts, as well as the analysis and simulation of system properties. This approach aims to enhance productivity, quality, and maintainability of software systems. Learned: Acceleo, ATL, EMF, OCL Classic, Sirius specifier Environnemnt, Xtext Complete SDK', ['Marc Pantel'], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Language Translation', SchoolCategory.ENSEEIHT, '1 semester', 'Introduction to compilation, Lexical analysis, Syntactic analysis, Attributed grammars, Abstract syntactic tree, Semantic analysis.', ['Aurélie Hurault', 'Philippe Quéinnec'], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Design and object programming', SchoolCategory.ENSEEIHT, '1 semester', 'The objectives of this course are to learn how to build a graphical user interface, gain practical experience with object-oriented concepts, and understand event-driven programming and its implementation in Java. The course plan includes studying state-transition diagrams, principles of user interface, constructing the presentation (view), event handling, and concluding remarks. Using JavaFX/Swing.', ['Xavier Crégut'], ModuleCategory.PROGRAMMING),
+        new Module('Introduction to Networks', SchoolCategory.ENSEEIHT, '1 semester', 'The history of internet. MAC and Ethernet, Wifi.', ['Gentian Jakllar'], ModuleCategory.NETWORKING),
+        new Module('Internet Protocols', SchoolCategory.ENSEEIHT, '1 semester', 'I - Internet<br/>Objective: Define Internet<br/>How: Historical, social, numerical, and technical overview.<br/>Key Points: Overview and challenges of definition.<br/><br/>II - Internet Protocol<br/>Objective: Understand and know about the core protocol of the Internet<br/>How: Focus on routing through addressing, followed by detailed exploration.<br/>Key Points: IPv4 addressing, routing principles, routing table, header structure, MTU, packet mode.<br/><br/>III - Transport Protocols<br/>Objective: Understand the importance of a transport protocol in Internet and how it originally functioned.<br/>How: Presenting the application needs and addressing them with UDP and TCP.<br/>Key Points: Application multiplexing, UDP, "basic" TCP (sliding window protocol, notations, error recovery, ...)<br/><br/>IV - Applications<br/>Objective: Familiarize with basic application concepts such as client/server and P2P.<br/>How: Illustrating with simple applications.<br/>Key Points: Using port concept, HTTP, FTP, SNMP, ...', ['Julien Fasson'], ModuleCategory.NETWORKING),
+        new Module('Telephone Networks', SchoolCategory.ENSEEIHT, '1 semester', 'INTRODUCTION<br/>General architecture<br/>Access network<br/>Voice digitisation<br/>ultiplexing<br/>Routing and addressing<br/>Signalling: SS7<br/>Access network: narrowband ISDN<br/>The core network: Digital Hierarchy: PDH - SDH', ['André-Luc BEYLOT'], ModuleCategory.NETWORKING),
+        new Module('Long-Distance Networks', SchoolCategory.ENSEEIHT, '1 semester', 'General introduction<br/>Data transmission networks<br/>X.25<br/>Frame Relay<br/>ATM<br/>Circuit-switched networks<br/>PSTN and signalling<br/>Increasing data rates: (PDH)/SDH hierarchies<br/>Telecom access networks<br/>The ISDN access network<br/>ADSL<br/>FTTH', ['André-Luc BEYLOT'], ModuleCategory.NETWORKING),
+        new Module('Centralized Systems', SchoolCategory.ENSEEIHT, '1 semester', 'Introduction, review of concepts<br/>The System API in C<br/>The System API on the command line<br/>Internal design of a system<br/>Process control<br/>Virtual memory<br/>File system', ['Philippe Quéinnec', 'Zouheir Hamrouni'], ModuleCategory.SYSTEM),
+        // new Module('Local Network Architecture', SchoolCategory.ENSEEIHT, '1 semester', '.', [''], ModuleCategory.NETWORKING),
+        new Module('Internet Protocols & Local Networks', SchoolCategory.ENSEEIHT, '1 semester', 'Internet Protocols & Local Networks involve the study and understanding of the protocols and technologies used for communication within local networks and over the Internet. This includes gaining knowledge about protocols such as TCP/IP, Ethernet, Wi-Fi, and DNS, as well as concepts related to IP addressing, subnetting, routing, and network security.', ['Béatrice Paillassa'], ModuleCategory.NETWORKING),
+        new Module('Advanced Internet Protocols', SchoolCategory.ENSEEIHT, '1 semester', "Learned: Internet architecture (Intra/Inter-ISP), Internet routing, transport considerations (TCP, congestion control), applications (Client-Server/Peer-to-Peer), IPv6, tunneling.", ['Julien Fasson'], ModuleCategory.NETWORKING),
+        new Module('Advanced Operated Networks', SchoolCategory.ENSEEIHT, '1 semester', 'Learned in this module: ATM, SDH, ADSL, FTTH.', ['André-Luc BEYLOT', 'Emmanuel CHAPUT'], ModuleCategory.NETWORKING),
+        new Module('Mobile/Wireless Operator Networks', SchoolCategory.ENSEEIHT, '1 semester', 'General introduction to the principles of mobile networks. 2G networks: GSM, GPRS, EDGE. 3G networks: UMTS, HSPA. 4G networks: LTE', ['André-Luc BEYLOT'], ModuleCategory.NETWORKING),
+        new Module('Logic, Proof, and Induction', SchoolCategory.ENSEEIHT, '1 semester', 'Learned: Propositional logic, Predicate logic, Proof of functional programs, Proof of imperative programs.', ['Marc Pantel'], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Statistics', SchoolCategory.ENSEEIHT, '1 semester', 'Learn how to collect, analyze, and interprete numerical data to uncover patterns, relationships, and trends. It provides tools and techniques for making informed decisions and drawing meaningful conclusions from data.', ['Vincent Charvillat'], ModuleCategory.MATH),
+        new Module('Operations Research', SchoolCategory.ENSEEIHT, '1 semester', 'Operations Research is a discipline that applies mathematical and analytical methods to solve complex decision-making problems in various fields. Learned: Linear Programming, Integer Linear Programming, Dynamic Programming and Extensions.', [], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Concurrent Systems IR', SchoolCategory.ENSEEIHT, '1 semester', 'Learned: Mutual Exclusion, Semaphore, Monitor, Synchronization, and Communication in Ada (Task, Rendezvous), Parallel Systems with Critical Resources and Deadlock.', ['Philippe Mauran'], ModuleCategory.SYSTEM),
+        new Module('Transition Systems', SchoolCategory.ENSEEIHT, '1 semester', 'Comprehensive understanding of transition systems, their formal specification, analysis techniques, and the application of temporal logic in reasoning about system properties. Operational specification: TLA+ - actions, Progress control: fairness, Stating properties: Linear Temporal Logic (LTL),  Study of a mutual exclusion algorithm,  Study of a distributed algorithm, Stating properties: Branching Temporal Logic (CTL).', ['Philippe Quéinnec', 'Xavier Thirioux', 'Aurélie Hurault'], ModuleCategory.ENGINEERING_TOOLS),
+        new Module('Security', SchoolCategory.ENSEEIHT, '1 semester', 'This course on computer security provides an introduction and review, followed by a focus on the specificities of embedded systems. The cryptographic functions are extensively studied, covering concepts and techniques to ensure data confidentiality, integrity, and authenticity in computer environments.', ['François Ravache'], ModuleCategory.SOFT_SKILL),
+        new Module('Interconnection of systems', SchoolCategory.ENSEEIHT, '1 semester.', 'Learned: OSI model. Telephony interconnection - VoIP - Towards the end of the PSTN. Local Area Network Interconnection. MPLS.', ['André-Luc BEYLOT', 'Julien Fasson', 'Emmanuel Chaput', 'Gentian Jakllari'], ModuleCategory.NETWORKING),
+        new Module('Middleware/Software packages', SchoolCategory.ENSEEIHT, '1 semester.', 'Remote communication between applications. Socket communication. Remote procedure calls and method calls. Asynchronous middleware: message communication', ['Philippe Quéinnec'], ModuleCategory.SYSTEM),
+
+        // UCM
+        new Module('Data and Information Management System', SchoolCategory.UCM, '4 months', 'Data warehouses. Multidimensional databases. Creation and maintenance of data warehouses, multidimensional architectures.<br/>- Semi-structured and hierarchical databases.<br/>- Other non-relational databases.<br/>- Information storage, indexing and retrieval. Index creation, query expansion, relevance assessment.<br/>- Databases on the Web.<br/>- Distributed databases. Global information systems, geographic information systems.<br/>- Development and implementation of data management architectures. Business layer.', ['Enrique Martín'], ModuleCategory.DATABASE),
+        new Module('Next-Generation Networks and the Internet', SchoolCategory.UCM, '4 months', '- Hierarchical organisation of the Internet and routing between autonomous systems.<br/>- Multicasting and multicast protocols.<br/>- Mobile network technologies and mobility on the Internet.<br/>- Quality of service (QoS) on the Internet.<br/>- Advanced Internet services: voice over IP, streaming, RTP.', ['Juan Carlos Fabero Jiménez'], ModuleCategory.NETWORKING),
+        new Module('Software Project Management', SchoolCategory.UCM, '4 months', '- Project approval and definition.<br/>- Project planning.<br/>- Project execution, monitoring and control.<br/>- Project communications management.<br/>- Project closure.', ['Albert Meco Alias'], ModuleCategory.MANAGEMENT),
+        new Module('Audit, Quality, and Reliability in Computing', SchoolCategory.UCM, '4 months', '- IT quality: quality standards, quality factors, quality metrics.<br/>- IT audit: audit standards and guidelines, risk analysis and management, audit process.<br/>- System reliability. Techniques for systematically testing system reliability: testing, model-checking,<br/>specification and verification. - Security and liveness testing. Test coverage System modelling.<br/>- Tools for (semi-)automatic reliability testing of systems.', ['Adrián Riesco Rodríguez'], ModuleCategory.SOFT_SKILL),
+        new Module('High-Performance Computing', SchoolCategory.UCM, '4 months', '- Advanced processor architectures: CPU, GPU, and NPU.<br/>' + '- Memory hierarchy and data locality.<br/>' + '- Introduction to parallel and distributed computing.<br/>' + '- Programming models for performance: SIMD, multithreading, shared vs distributed memory.<br/>' + '- GPGPU programming using CUDA.<br/>' + '- Optimization techniques and low-level performance libraries.<br/>' + '- Profiling, benchmarking, and scalability analysis.', ['Francisco D. Igual'], ModuleCategory.PROGRAMMING),
+    ];
+
+    /**
+     * Renders the modules for a specific school into a container.
+     * @param {string} schoolCat - The category of the school (e.g., 'UCM').
+     * @param {string} containerId - The ID of the HTML element to render into.
+     */
+   function renderModules(schoolCat, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        // Filter modules for the given school
+        const schoolModules = MOCKED_MODULES.filter(m => m.schoolCategory === schoolCat);
+        if (schoolModules.length === 0) return;
+
+        // Get unique module categories for this school (removed 'All')
+        const categories = [...new Set(schoolModules.map(m => m.moduleCategory))];
+
+        // Create the filter buttons
+        const filtersHtml = `
+            <div class="module-filters">
+                ${categories.map((cat, index) => `
+                    <button class="module-filter-btn ${index === 0 ? 'active' : ''}" data-category="${cat}">
+                        ${cat}
+                    </button>
+                `).join('')}
+            </div>
+        `;
+
+        // Create the module cards
+        const modulesHtml = `
+            <div class="module-list">
+                ${schoolModules.map(module => `
+                    <div class="module-card" data-category="${module.moduleCategory}">
+                        <h5>${module.name}</h5>
+                        <p>${module.description}</p>
+                        <span class="duration">Duration: ${module.duration}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        
+        // Combine and inject the HTML
+        container.innerHTML = `
+            <div class="modules-container">
+                <h4 class="text-center mb-4">Modules Studied</h4>${filtersHtml}
+                ${modulesHtml}
+            </div>`;
+
+        // Get all filter buttons and module cards after injecting HTML
+        const moduleCards = container.querySelectorAll('.module-card');
+        const allFilterButtons = container.querySelectorAll('.module-filter-btn');
+
+        // Add event listeners for all category filter buttons
+        allFilterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and add to the clicked one
+                allFilterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const selectedCategory = button.dataset.category;
+
+                // Show/hide module cards based on the selected category
+                moduleCards.forEach(card => {
+                    if (card.dataset.category === selectedCategory) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add the "X" button (close icon)
+        const clearButton = document.createElement('button');
+        clearButton.classList.add('module-filter-btn');
+        clearButton.innerHTML = '<i class="fa fa-times"></i>'; // Use Font Awesome close icon
+        clearButton.style.color = 'red'; 
+        clearButton.addEventListener('click', () => {
+            allFilterButtons.forEach(btn => btn.classList.remove('active')); // Deactivate other buttons
+            clearButton.classList.add('active'); // Keep 'X' active
+            moduleCards.forEach(card => {
+                card.style.display = 'none'; // Hide all modules
+            });
+        });
+        container.querySelector('.module-filters').prepend(clearButton); // Place 'X' button first
+
+        // Initial display logic:
+        // Find the button that is initially active (the first category button)
+        const initiallyActiveButton = container.querySelector('.module-filter-btn.active');
+        if (initiallyActiveButton) {
+            // Trigger the display of modules for the initially active category
+            const selectedCategory = initiallyActiveButton.dataset.category;
+            moduleCards.forEach(card => {
+                if (card.dataset.category === selectedCategory) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        } else {
+            // Fallback: If no category is initially active (e.g., no modules), hide all.
+            moduleCards.forEach(card => {
+                card.style.display = 'none';
+            });
+        }
+    }
+    jQuery(document).ready(function() {
+        $(function() {
+            // jquery typed plugin
+            $(".typed").typed({
+                stringsElement: $('.typed-strings'),
+                typeSpeed: 100,
+                backDelay: 500,
+                loop: true,
+                contentType: 'html', // or text
+                // defaults to false for infinite loop
+                loopCount: false,
+                callback: function() { null; },
+                resetCallback: function() { newTyped(); }
+            });
+        });
+
+        // Your existing accordion logic
+        document.querySelectorAll(".accordion-section-title").forEach((accordionTitle) => {
+            accordionTitle.addEventListener("click", () => {
+                const content = accordionTitle.nextElementSibling;
+                const isActive = accordionTitle.classList.contains("active");
+
+                document.querySelectorAll('.accordion-section-title').forEach(title => {
+                    if (title !== accordionTitle) {
+                        title.classList.remove('active');
+                        title.nextElementSibling.style.display = 'none';
+                    }
+                });
+
+                if (isActive) {
+                    accordionTitle.classList.remove("active");
+                    content.style.display = "none";
+                } else {
+                    accordionTitle.classList.add("active");
+                    content.style.display = "block";
+                }
+            });
+        });
+
+        // Render the modules when the document is ready
+        renderModules(SchoolCategory.UCM, 'ucm-modules-container');
+        renderModules(SchoolCategory.ENSEEIHT, 'enseeiht-modules-container');
+        renderModules(SchoolCategory.IUT, 'iut-modules-container');
+    });
+    
     </script>
 </body>
 
