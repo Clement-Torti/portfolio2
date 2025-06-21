@@ -70,11 +70,7 @@
             border-color: var(--primary-color);
         }
 
-        .module-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
+    
 
         .module-card {
             background: #fff;
@@ -129,6 +125,12 @@
 
         .dark-scheme .module-card .duration {
             color: #aaa;
+        }
+
+        @media (max-width: 767.98px) {
+            #ucm-modules-container, #iut-modules-container, #enseeiht-modules-container {
+                display: none !important;
+            }
         }
     </style>
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
@@ -307,7 +309,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="newgallery" class="">
+                    <div id="gallery" class="">
                        
                     </div>
                     </div>
@@ -994,25 +996,23 @@
         // Function to create HTML for each gallery item
         function createGalleryItemHTML(project) {
             return `
-                    <div class="p-3 col-lg-4 col-md-6 col-sm-6" >
-                        <div class="card project">
-                            <div class="text-center mt-2">
-                                <i class="${project.icon}" style="font-size: 30px;"></i>
+                    <a class="col-md-4 item" href="https://www.instagram.com/maseratird/" target="_blank">
+                            <div class="wow">
+                                <div class="card-image-1 mod-d" data-tilt>
+                                    <div class="d-text">
+                                        <h3>Maserati RD</h3>
+                                        <h5 class="d-tag" >instagram (via Boxx)</h5>
+                                    </div>
+                                    <img src="images/experience/ecs.png" class="img-fluid" alt="">
+                                </div>
                             </div>
-                            <div class="card-body text-center" style="margin-top: -10px;">
-                                <h5 class="card-title">${ project.name }</h5>
-                                <p class="card-text">${project.categories.join(' ')} - ${ project.technologies.join(' ')}</p>
-                                <hr />
-                                <p><small>${project.shortDescription}</small></p>
-                            </div>
-                        </div>
-                    </div>
+                        </a>
             `;
         }
 
         // Function to populate the gallery
         function populateGallery() {
-            const gallery = document.getElementById('newgallery');
+            const gallery = document.getElementById('gallery');
             
             // Generate HTML for all gallery items
             const galleryHTML = MOCKED_PROJECTS.map(project => createGalleryItemHTML(project)).join('');
