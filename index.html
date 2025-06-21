@@ -127,9 +127,16 @@
             color: #aaa;
         }
 
-        @media (max-width: 767.98px) {
-            #ucm-modules-container, #iut-modules-container, #enseeiht-modules-container {
+        .fix-title {
                 display: none !important;
+            }
+
+        @media (max-width: 767.98px) {
+            #ucm-modules-container, #iut-modules-container, #enseeiht-modules-container´, .moving-title {
+                display: none !important;
+            }
+            .fix-title {
+                display: block !important;
             }
         }
     </style>
@@ -208,7 +215,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-5">
                                 <div class="spacer-10"></div>
-                                <div class="h1 wow fadeInUp .medium-screen" style="font-size: 40px;" data-wow-delay=".6s" >
+                                <div class="h1 wow fadeInUp .medium-screen moving-title" style="font-size: 40px;" data-wow-delay=".6s" >
                                     Hi, I am <span class="id-color">Clément Torti</span><br> I am a
                                     <div class="typed-strings">
                                         <p>Technical Lead</p>
@@ -216,6 +223,14 @@
                                     </div>
                                     <div class="typed"></div>
                                 </div>
+
+                                <div class="h1 wow fadeInUp .medium-screen fix-title" style="font-size: 40px;" data-wow-delay=".6s" >
+                                    Hi, I am <span class="id-color">Clément Torti</span><br> I am a
+                                    <div class="">
+                                        <p>Technical Lead & Solutions Architect</p>
+                                    </div>
+                                </div>
+
                                 <p style="text-align: justify; line-height: 1.5;" class="wow fadeInUp" data-wow-delay=".6s">
                                     Passionate about computer science, I enjoy <b>exploring new technologies</b> and designing <b>refined architectural ecosystems</b> that support the company's business goals and bring additional value to the products. I thrive on <b>guiding and supporting my team</b> to achieve its best and fostering a collaborative environment where innovation and continuous improvement are part of the culture.
                                 </p>
@@ -328,7 +343,7 @@
 
                     <div class="row gh-5">
                         <div class="col-lg-6 wow fadeInUp">
-                            <div class="p-4">
+                            <div class="p-0 p-md-4">
                                 <h3 class="s_border">Experience</h3>
                                 <ul class="d_timeline">
 
