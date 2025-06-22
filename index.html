@@ -1373,6 +1373,10 @@
                     links.push(`<a href="${project.videoUrl}" target="_blank" class="project-link">🎥 Demo</a>`);
                 }
 
+                if (project.reportFile) {
+                    links.push(`<a href="pdfs/${project.reportFile}" target="_blank" class="project-link">📑 Report PDF</a>`);
+                }
+
                 projectCard.innerHTML = `
                     <div class="project-header">
                         <div class="project-icon">${iconMap[project.icon] || '💼'}</div>
@@ -1387,6 +1391,14 @@
                         <div class="details-content">
                             <div class="details-grid">
                                 <div class="detail-section">
+                                    ${links.length > 0 ? `
+                                        <div class="detail-section">
+                                            <h4>🔗 Links</h4>
+                                            <div class="project-links">
+                                                ${links.join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
                                     <h4>📋 Description</h4>
                                     <p>${project.description}</p>
                                 </div>
@@ -1422,14 +1434,6 @@
                                     ${project.learnings.map(learning => `<li>${learning}</li>`).join('')}
                                 </ul>
                             </div>
-                            ${links.length > 0 ? `
-                                <div class="detail-section">
-                                    <h4>🔗 Links</h4>
-                                    <div class="project-links">
-                                        ${links.join('')}
-                                    </div>
-                                </div>
-                            ` : ''}
                         </div>
                     </div>
                 `;
