@@ -5176,12 +5176,12 @@ i.font60 {
 .card-image-1 {
     position: relative;
     overflow: hidden;
-    height: 300px;
     background-color: var(--primary-color);
     margin: 5px;
+
 }
 
-.card-image-1:hover {
+.card-image-1:hover img {
     transform: scale(1.05);
 }
 
@@ -10444,7 +10444,7 @@ a:hover,
     font-size: 14px;
 }
 
-#gallery .item{
+#gallery .item {
     margin-bottom: 25px;
 }
 
