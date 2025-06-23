@@ -958,7 +958,10 @@
             'icon_chat_square_text': '💭',
             'icon_code_square': '💻',
             'icon_hospital': '🏥',
-            'icon_person_badge': '👤'
+            'icon_person_badge': '👤',
+            'icon_arrows_left_right': '🔁',    
+            'icon_gear': '⚙️',                     
+            'icon_market_front': '🏬' 
         };
 
 
@@ -984,6 +987,77 @@
         }
 
     const MOCKED_PROJECTS = [
+
+        new Project('CPE - Electronic Payment Hub ',
+        'icon_arrows_left_right',
+        'Transactional SOAP API that connects thousands of points of sale and digital payment solutions to the APIs of major billers in Dominican Republic (Edesur, CAASD, Claro, etc.) to enable bill payment and top-ups. Processes millions of transactions per year.',
+        'Transactional SOAP API processing millions of annual transactions between POS systems and billers like Edesur or Claro.',
+        'Transneg, Dominican Republic',
+        '2023 - 2026',
+        'Main developer',
+        'Local / Dev / Prod - Azure DevOps CI/CD',
+        ['Clément Torti', 'Gorky Rojas'],
+        ['.NET Framework', 'MySQL'],
+        ['Visual Studio', 'Postman', 'Azure DevOps', 'AWS EC2', 'Wireshark'],
+        [
+            'Advanced SOAP API integration and authentication.',
+            'Management of end-to-end encrypted tunnels with billers.',
+            'Handling and recovery of high-volume transactional errors.',
+            'Deployment and monitoring of 24/7 critical infrastructure.',
+            'Insight into telecom and utility biller ecosystems.'
+        ],
+        null,
+        null,
+        null,
+        [ProjectCategory.WEB]),
+
+
+        // GESTIÓN DE AGENCIAS
+
+        new Project('Agency Management',
+        'icon_gear',
+        'Backoffice of the CPE allowing management of points of sale. Grants access to specific billers and payment types, visualizes and reconciles transactions, and performs batch closures.',
+        'Backoffice to manage POS permissions, monitor and reconcile transactions, and close operational batches.',
+        'Transneg, Dominican Republic',
+        '2023 - 2026',
+        'Main developer',
+        'Agile-like – Azure DevOps boards and pipelines',
+        ['Clément Torti'],
+        ['.NET', 'Angular', 'MySQL'],
+        ['Visual Studio', 'Angular CLI', 'Azure DevOps', 'AWS EC2'],
+        [
+        ],
+        null,
+        null,
+        '',
+        [ProjectCategory.WEB]),
+
+
+        // VIRTUALPOS
+
+        new Project('VirtualPoS',
+        'icon_market_front',
+        'Digital platform for physical points of sale (supermarkets, pharmacies, etc.) with direct contracts with Transneg, giving them access to CPE services for bill payments and top-ups.',
+        'Web and mobile platform for POS to access bill payment and recharge services through CPE.',
+        'Transneg, Dominican Republic',
+        '2023 - 2026',
+        'Main developer',
+        'DevOps pipeline with testing and production branches on Azure',
+        ['Clément Torti'],
+        ['.NET', 'Angular', 'SQL Server', 'Cordova'],
+        ['Visual Studio', 'Android Studio', 'Azure DevOps', 'AWS EC2'],
+        [
+            'Visit to users to get real world feedback and make selling process more efficient.',
+            'Multi-platform delivery: Angular for web, Cordova for mobile.',
+            'Responsive UI optimized for small POS devices.',
+            'Integration of CPE APIs into user-friendly interfaces.',
+            'Hybrid mobile app packaging and distribution.'
+        ],
+        null,
+        null,
+        '',
+        [ProjectCategory.WEB, ProjectCategory.MOBILE]),
+
         // LIBRARY MANAGEMENT
         new Project('LIBRARY MANAGEMENT', 
         'icon_book',
