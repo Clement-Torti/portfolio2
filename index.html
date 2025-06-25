@@ -961,7 +961,8 @@
             'icon_person_badge': '👤',
             'icon_arrows_left_right': '🔁',    
             'icon_gear': '⚙️',                     
-            'icon_market_front': '🏬' 
+            'icon_market_front': '🏬',
+            'icon_theater': '🎭'
         };
 
 
@@ -987,6 +988,31 @@
         }
 
     const MOCKED_PROJECTS = [
+    new Project('National Theater Ticketing', 
+        'icon_theater',
+        'This is the official ticketing website for the National Theater of Santo Domingo.',
+        'Ticketing website for the National Theater of Santo Domingo.',
+        'Transneg, Dominican Republic',
+        '2024 - 2026',
+        'Developer then Supervisor',
+        'Agile',
+        ['Clément Torti', 'Jeffrey Jose', 'Bily M. Sanchez Alvarez', 'Carlos Minier'],
+        ['Angular', '.NET', 'SQL Server'],
+        ['Visual Studio', 'Google Analytics', 'AWS EC2', 'Azure Devops'],
+        [
+            'Optimized image loading by serving multiple size versions.',
+            'Adjusted ticket styles to always fit printer output regardless of content.',
+            'Worked with a professional ticket printer.',
+            'Supervised development of a new version with additional features.',
+            'Configured Google Analytics for tracking visits, sales, and marketing strategy.',
+            'Migrated the server to a newer Windows EC2 instance.'
+        ],
+        '',
+        'https://boleteria.com.do/',
+        '',
+        [ProjectCategory.WEB]
+        ),
+
 
         new Project('CPE - Electronic Payment Hub ',
         'icon_arrows_left_right',
@@ -1034,7 +1060,6 @@
 
 
         // VIRTUALPOS
-
         new Project('VirtualPoS',
         'icon_market_front',
         'Digital platform for physical points of sale (supermarkets, pharmacies, etc.) with direct contracts with Transneg, giving them access to CPE services for bill payments and top-ups.',
