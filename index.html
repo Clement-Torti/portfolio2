@@ -1893,6 +1893,7 @@
                 <div class="project-summary">${project.shortDescription}</div>
                 <div class="project-tags">
                     ${project.categories.map(cat => `<span class="project-tag">${cat}</span>`).join('')}
+                    ${project.technologies.map(cat => `<span class="project-tag">${cat}</span>`).join('')}
                 </div>
                 <div class="expand-indicator">▼</div>
             </div>
@@ -2210,7 +2211,7 @@
             const filtersHtml = `
             <div class="module-filters">
                 ${categories.map((cat, index) => `
-                    <button class="module-filter-btn ${index === 0 ? 'active' : ''}" data-category="${cat}">
+                    <button class="module-filter-btn" data-category="${cat}">
                         ${cat}
                     </button>
                 `).join('')}
