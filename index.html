@@ -446,6 +446,152 @@
             transform: translateY(0);
         }
 
+        /* Hobbies filter buttons */
+.hobbies-filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.hobbies-filter-btn {
+    background: #f8f9fa;
+    border: 2px solid gray;
+    color: black;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.hobbies-filter-btn:hover {
+    background: #e9ecef;
+}
+
+.hobbies-filter-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), rgb(var(--primary-color-darker)));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* NEW: Carousel container */
+.hobbies-carousel-container {
+    position: relative;
+    margin: 2rem 0;
+    padding: 0 50px;
+    width: 90vw;
+    margin-left: calc(-45vw + 50%);
+}
+
+/* NEW: Carousel wrapper */
+.hobbies-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hobbies-carousel::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+/* NEW: Carousel arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #495057;
+}
+
+.carousel-arrow:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.carousel-arrow-left {
+    left: 10px;
+}
+
+.carousel-arrow-right {
+    right: 10px;
+}
+
+/* Updated hobby card for carousel */
+.hobby-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 350px;
+    flex-shrink: 0;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hobby-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.hobby-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.hobby-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.hobby-image {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.hobby-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+
+
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -503,6 +649,29 @@
             .filter-select {
                 min-width: 200px;
             }
+
+                .hobbies-carousel-container {
+        padding: 0 30px;
+    }
+    
+    .hobby-card {
+        width: 280px;
+    }
+    
+    .hobbies-filter-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .hobbies-filter-btn {
+        min-width: 200px;
+    }
+    
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+    }
         }
 
         @media (max-width: 480px) {
@@ -1106,6 +1275,43 @@
                 </div>
         </div>
         </section>
+
+        <!-- HTML Section to add -->
+        <section id="section-hobbies" class="no-bottom">
+            <div class="container relative">
+                <div class="section-header" style="text-align: center;">
+                    <h2>Hobbies</h2>
+                    <div class="space-border"></div>
+                    <p>My personal interests and passions</p>
+                </div>
+
+                <div class="hobbies-filter-container">
+                    <button class="hobbies-filter-btn active" data-filter="LANGUAGES">Languages</button>
+                    <button class="hobbies-filter-btn" data-filter="GUITARE">Guitare</button>
+                    <button class="hobbies-filter-btn" data-filter="TECH">Tech</button>
+                </div>
+
+                <!-- Updated carousel structure -->
+                <div class="hobbies-carousel-container">
+                    <button class="carousel-arrow carousel-arrow-left" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="hobbies-carousel" id="hobbies-container">
+                        <!-- Hobbies will be dynamically inserted here -->
+                    </div>
+                    
+                    <button class="carousel-arrow carousel-arrow-right" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
 
     </div>
     <!-- content close -->
@@ -2342,6 +2548,342 @@
             renderModules(SchoolCategory.ENSEEIHT, 'enseeiht-modules-container');
             renderModules(SchoolCategory.IUT, 'iut-modules-container');
         });
+
+
+  const HOBBIES_CATEGORIES = {
+    LANGUAGES: 'LANGUAGES',
+    GUITARE: 'GUITARE',
+    TECH: 'TECH'
+};
+
+// Updated MOCKED_HOBBIES - same data structure
+const MOCKED_HOBBIES = [
+    // Languages
+    {
+        title: 'Languages progress, 2023.',
+        videoUrl: 'https://youtu.be/7Znv94WrEns',
+        category: HOBBIES_CATEGORIES.LANGUAGES
+    },
+    {
+        title: 'Andalusian festival in Saint-Jean-de-Luz, France.',
+        videoUrl: 'https://youtu.be/zEEx0q4Fg64',
+        category: HOBBIES_CATEGORIES.LANGUAGES
+    },
+    {
+        title: 'Mass in Saint-Jean-de-Luz, France.',
+        videoUrl: 'https://youtu.be/HnqKHhZ6mNQ',
+        category: HOBBIES_CATEGORIES.LANGUAGES
+    },
+    {
+        title: 'Arabic progress after a year, 2022.',
+        videoUrl: 'https://youtu.be/XJrkkvR8Wiw',
+        category: HOBBIES_CATEGORIES.LANGUAGES
+    },
+    {
+        title: 'Script of the arabic progress video.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'arabic_script_2022.JPG'
+    },
+    {
+        title: 'Arabic conference in the institute of the arab world, Paris, France.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'arabic_conference.jpeg'
+    },
+    {
+        title: 'Arabic institute in Paris, France.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'arabic_museum.jpeg'
+    },
+    {
+        title: 'Instrument from the arabe institute in Paris, France.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'ude.jpeg'
+    },
+    {
+        title: 'My arabic textbook for exercices.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'arabic_text_book.jpeg'
+    },
+    {
+        title: 'Yellow chatters in Toulouse to talk foreign languages.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'blabla_exchange.jpeg'
+    },
+    {
+        title: 'Enseeiht prom 2023. it is important to be well surrounded.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'enseeiht_promo.JPG'
+    },
+    {
+        title: 'Fes, 2022.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'fes_2022.jpeg'
+    },
+    {
+        title: 'Hindu temple, Saint-Pierre, Reunion Island, France.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'hindu_temple.jpg'
+    },
+    {
+        title: 'With latinos in bordeaux, ready to see the Tour the France in Libourne, 2021.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'latinos_friends.jpeg'
+    },
+    {
+        title: 'From the impressive madrid arena, 2023.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'madrid_arena.jpeg'
+    },
+    {
+        title: 'Last day with the prom at the UCM, madrid.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'madrid_friends.jpeg'
+    },
+    {
+        title: 'Mosque of Paris.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'mosquee_paris.jpeg'
+    },
+    {
+        title: 'My new frame from Seville, love it.',
+        videoUrl: '',
+        category: HOBBIES_CATEGORIES.LANGUAGES,
+        imageFile: 'seville.jpeg'
+    },
+
+    // Guitare
+    // {
+    //     title: 'Marseillan, South of France 2022.',
+    //     videoUrl: 'https://youtube.com/shorts/z-JsLGIa7TY',
+    //     category: HOBBIES_CATEGORIES.GUITARE
+    // },
+    {
+        title: 'Bella ciao.',
+        videoUrl: 'https://youtu.be/tP_Jyl0FKEQ',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Capricho Árabe.',
+        videoUrl: 'https://youtu.be/PUuKtrbnNgg',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Godfather.',
+        videoUrl: 'https://youtu.be/NA7Idbx0RU8',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Cover bella.',
+        videoUrl: 'https://youtu.be/xGQ6NLIcQOs',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Saint-Paul market, Isla reunion, France 2021.',
+        videoUrl: 'https://youtu.be/C-KBQtsZ5E8',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Tarentella.',
+        videoUrl: 'https://youtu.be/x39S_kFeIZs',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Love yourself cover, 2016.',
+        videoUrl: 'https://youtu.be/x1PdeyxQVjc',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Mandalorian.',
+        videoUrl: 'https://youtu.be/YPsdOqfEdok',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Tango.',
+        videoUrl: 'https://youtu.be/iP14QTm1sO0',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Lala land.',
+        videoUrl: 'https://youtu.be/8c3eaWSPWwM',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Spanish guitare in the malaga castle',
+        videoUrl: 'https://youtu.be/GhG15KWpMNo',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+    {
+        title: 'Tango 2.',
+        videoUrl: 'https://youtu.be/Pu_kJaMa3ZM',
+        category: HOBBIES_CATEGORIES.GUITARE
+    },
+
+    // Tech
+    {
+        title: 'MKBHD: Tech reviews, smartphone coverage, and in-depth analysis of the latest gadgets.',
+        videoUrl: 'https://www.youtube.com/watch?v=8om1eJrO2lU',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'CNET: Tech news, product reviews, and helpful guides for consumer electronics.',
+        videoUrl: 'https://www.youtube.com/watch?v=uKkCWmz8SW8',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'MaxTech: Detailed tech reviews, comparisons, and buying advice for a wide range of apple products.',
+        videoUrl: 'https://www.youtube.com/watch?v=Xzo7_2o_218',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'Dave2d: Unbiased tech reviews, laptop recommendations, and gaming hardware analysis.',
+        videoUrl: 'https://www.youtube.com/watch?v=C6VuSPPkTeY',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'Lew later: Tech news, smartphone unboxings, and discussions on the latest tech trends.',
+        videoUrl: 'https://www.youtube.com/watch?v=D3y2h-LhCKw',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'Friday checkout: Product reviews, tech deals, and recommendations for various consumer electronics.',
+        videoUrl: 'https://www.youtube.com/watch?v=mM-e-VHc47s',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'ThrillSeeker: VR gaming, virtual reality technology, and immersive experiences in the world of gaming.',
+        videoUrl: 'https://www.youtube.com/watch?v=jID3QptLJz4',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'NateGentile: Tech tutorials, programming guides, and software development tips and tricks.',
+        videoUrl: 'https://www.youtube.com/watch?v=Th8YtKq4LRg',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'DotCSV: Data science, machine learning, and AI tutorials with practical examples and coding demos.',
+        videoUrl: 'https://www.youtube.com/watch?v=PtR3MI89bK4',
+        category: HOBBIES_CATEGORIES.TECH
+    },
+    {
+        title: 'Fireship: Web development tutorials, JavaScript frameworks, and coding techniques for modern web applications.',
+        videoUrl: 'https://www.youtube.com/watch?v=q1fsBWLpYW4',
+        category: HOBBIES_CATEGORIES.TECH
+    }
+];
+
+// Helper function to extract YouTube video ID
+function getYouTubeVideoId(url) {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+}
+
+// Updated render function for carousel
+function renderHobbies(category = HOBBIES_CATEGORIES.LANGUAGES) {
+    const container = document.getElementById('hobbies-container');
+    container.innerHTML = '';
+
+    const filteredHobbies = MOCKED_HOBBIES.filter(hobby => hobby.category === category);
+
+    filteredHobbies.forEach((hobby, index) => {
+        const hobbyCard = document.createElement('div');
+        hobbyCard.className = 'hobby-card';
+
+        if (hobby.videoUrl) {
+            const videoId = getYouTubeVideoId(hobby.videoUrl);
+            if (videoId) {
+                hobbyCard.innerHTML = `
+                    <div class="hobby-title">${hobby.title}</div>
+                    <div class="hobby-video">
+                        <iframe 
+                            src="https://www.youtube.com/embed/${videoId}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+            }
+        } else if (hobby.imageFile) {
+            hobbyCard.innerHTML = `
+                <div class="hobby-title">${hobby.title}</div>
+                <div class="hobby-image">
+                    <img src="images/hobbies/${hobby.imageFile}" alt="${hobby.title}" />
+                </div>
+            `;
+        }
+
+        container.appendChild(hobbyCard);
+    });
+
+    // Reset scroll position
+    container.scrollLeft = 0;
+}
+
+// NEW: Carousel navigation functions
+function initializeCarousel() {
+    const container = document.getElementById('hobbies-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (!container || !prevBtn || !nextBtn) return;
+
+    const cardWidth = 350 + 24; // card width + gap
+
+    prevBtn.addEventListener('click', () => {
+        container.scrollBy({
+            left: -cardWidth * 2,
+            behavior: 'smooth'
+        });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        container.scrollBy({
+            left: cardWidth * 2,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Initialize hobbies filters
+function initializeHobbiesFilters() {
+    const filterButtons = document.querySelectorAll('.hobbies-filter-btn');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+            renderHobbies(filterValue);
+        });
+    });
+}
+
+// Initialize hobbies section when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if hobbies section exists
+    if (document.getElementById('hobbies-container')) {
+        renderHobbies(); // Default to Languages
+        initializeHobbiesFilters();
+        initializeCarousel(); // NEW: Initialize carousel navigation
+    }
+});
 
     </script>
 </body>
