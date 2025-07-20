@@ -767,6 +767,7 @@
                                     <li><a href="#section-portfolio">Portfolio<span></span></a></li>
                                     <li><a href="#section-resume">My Resume<span></span></a></li>
                                     <li><a href="#section-about">About Me<span></span></a></li>
+                                    <li><a href="#section-hobby">Hobbies<span></span></a></li>
                                     <li><a href="#section-contact">Contact Me<span></span></a></li>
 
                                 </ul>
@@ -1235,9 +1236,43 @@
                 </div>
             </section>
 
+        <!-- HTML Section to add -->
+        <section id="section-hobby" class="no-bottom">
+            <div class="container relative">
+                <div class="section-header" style="text-align: center;">
+                    <h2>Hobbies</h2>
+                    <div class="space-border"></div>
+                    <p>My personal interests and passions</p>
+                </div>
 
+                <div class="hobbies-filter-container">
+                    <button class="hobbies-filter-btn active" data-filter="LANGUAGES">Languages</button>
+                    <button class="hobbies-filter-btn" data-filter="GUITARE">Guitare</button>
+                    <button class="hobbies-filter-btn" data-filter="TECH">Tech</button>
+                </div>
 
+                <!-- Updated carousel structure -->
+                <div class="hobbies-carousel-container">
+                    <button class="carousel-arrow carousel-arrow-left" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="hobbies-carousel" id="hobbies-container">
+                        <!-- Hobbies will be dynamically inserted here -->
+                    </div>
+                    
+                    <button class="carousel-arrow carousel-arrow-right" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
 
+        
             <section id="section-contact" class="jarallax">
                 <div class="de-gradient-edge-top"></div>
                 <img src="images/background/l5.jpg" class="jarallax-img" alt="">
@@ -1274,42 +1309,6 @@
                     </div>
                 </div>
         </div>
-        </section>
-
-        <!-- HTML Section to add -->
-        <section id="section-hobbies" class="no-bottom">
-            <div class="container relative">
-                <div class="section-header" style="text-align: center;">
-                    <h2>Hobbies</h2>
-                    <div class="space-border"></div>
-                    <p>My personal interests and passions</p>
-                </div>
-
-                <div class="hobbies-filter-container">
-                    <button class="hobbies-filter-btn active" data-filter="LANGUAGES">Languages</button>
-                    <button class="hobbies-filter-btn" data-filter="GUITARE">Guitare</button>
-                    <button class="hobbies-filter-btn" data-filter="TECH">Tech</button>
-                </div>
-
-                <!-- Updated carousel structure -->
-                <div class="hobbies-carousel-container">
-                    <button class="carousel-arrow carousel-arrow-left" id="prevBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                        </svg>
-                    </button>
-                    
-                    <div class="hobbies-carousel" id="hobbies-container">
-                        <!-- Hobbies will be dynamically inserted here -->
-                    </div>
-                    
-                    <button class="carousel-arrow carousel-arrow-right" id="nextBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </section>
 
 
