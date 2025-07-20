@@ -2226,10 +2226,12 @@
                         <h5>${module.name}</h5>
                         <p>${module.description}</p>
                         <span class="duration">Duration: ${module.duration}</span>
+                        <p class="duration">Teacher(s): ${module.teachers.join(', ')}</p>
                     </div>
                 `).join('')}
             </div>
         `;
+
 
             // Combine and inject the HTML
             container.innerHTML = `
