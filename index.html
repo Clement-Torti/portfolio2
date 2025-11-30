@@ -934,10 +934,11 @@
                             <p style="text-align: justify; line-height: 1.5;" class="wow fadeInUp" data-wow-delay=".6s">
                                 Passionate about computer science, I enjoy <b>exploring new technologies</b> and
                                 designing <b>refined architectural ecosystems</b> that support the company's business
-                                goals and bring additional value to the products. I thrive on <b>guiding and supporting
-                                    my team</b> to achieve its best and fostering a collaborative environment where
-                                innovation and continuous improvement are part of the culture.
-                            </p>
+                                goals and bring additional value to the products. Guided by curiosity and a commitment 
+                                to continuous learning, I adapt quickly to <b>new sectors</b>. I thrive on <b>guiding 
+                                and supporting my team</b> to achieve its best and fostering a collaborative 
+                                environment where innovation and continuous improvement are part of the culture.
+                            </p>                            
                             <div class="spacer-10"></div>
                             <ul class="list_location wow fadeInUp" data-wow-delay=".8s">
                                 <li><span>French</span>
@@ -988,9 +989,11 @@
                                         <i class="icon_tools id-color"></i>
                                         <div class="text">
                                             <h3>Technical Expertise</h3>
-                                            Extensive technical experience in programming, networking, infrastructure,
-                                            and databases — empowered by a responsible use of AI.
-                                        </div>
+                                            <p id="tech-exp">
+                                              <span id="exp-years">X</span>+ years of professional technical experience in programming,
+                                              networking, infrastructure, and databases — empowered by a responsible use of AI.
+                                            </p>
+                                          </div>
                                     </div>
                                 </div>
                             </div>
@@ -1095,7 +1098,7 @@
                                                 style="max-width: 200px;" class="img-fluid" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Senior Developer</span>
+                                                class="d_title">Senior Developer (Angular/.NET/AWS)</span>
                                             <a href="https://transnegrd.com/" target="_blank"><span
                                                     class="d_company">Transneg Santo Domingo, Dominican
                                                     Republic</span></a>
@@ -1136,7 +1139,7 @@
                                                 style="max-width: 200px;" class="img-fluid" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">
-                                                IoT Developer/Tester (Apprenticeship)</span>
+                                                IoT Developer & Tester (Python/Angular) - Apprenticeship</span>
                                             <a href="https://edevice.com/" target="_blank"><span
                                                     class="d_company">eDevice Bordeaux, France</span></a>
                                             I worked at an IT company providing connectivity solutions to the healthcare
@@ -1168,7 +1171,7 @@
                                                 style="max-width: 150px;" class="img-fluid" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Fullstack Developer (Internship)</span>
+                                                class="d_title">Fullstack Developer (React/NodeJS) - Internship</span>
                                             <a href="https://www.globallogic.com/uki/" target="_blank"><span
                                                     class="d_company">ECS Digital London, UK</span></a>
                                             Rebranded GlobalLogic, a London-based digital transformation service
@@ -1192,7 +1195,7 @@
                                                 style="max-width: 200px;" class="img-fluid" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Mobile Developer (Summer Job)</span>
+                                                class="d_title">Mobile Developer (Swift) - Summer Job</span>
                                             <a href="https://yansys-medical.fr/en/home/" target="_blank"><span
                                                     class="d_company">Yansys Vichy, France</span></a>
                                             Medical software company. I was in charge of the development of the mobile
@@ -1522,10 +1525,13 @@
             });
         });
 
-        const startYear = 2016;
+        const personalStartYear = 2016;
         const currentYear = new Date().getFullYear();
-        const years = currentYear - startYear;
-        document.getElementById("experience-years").innerText = `${years}y+ programming`;
+        const personalYears = currentYear - personalStartYear;
+        document.getElementById("experience-years").innerText = `${personalYears}y+ programming`;
+        const profesionalStartYear = 2020;
+        const profesionalYears = currentYear - profesionalStartYear;
+        document.getElementById("exp-years").innerText = `${profesionalYears}${document.getElementById("exp-years").innerText}`;
         document.getElementById("currentYear").textContent = currentYear;
 
         const ProjectCategory = {
