@@ -1,0 +1,297 @@
+/* Portfolio: filters, project grid, expandable details, show-more button. */
+
+/* Portfolio */
+/* Filter Buttons */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid gray;
+    color: dark;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Project Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.project-card {
+    background: var(--primary-color);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: rgb(var(--primary-color-darker));
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card.expanded {
+    grid-column: 1 / -1;
+    /* Spans full grid width */
+    max-width: none;
+    background-color: rgb(var(--primary-color-darker));
+}
+
+.project-header {
+    padding: 1.5rem;
+    color: white;
+    position: relative;
+}
+
+.project-icon {
+    width: 50px;
+    height: 50px;
+    background: rgb(var(--primary-color-lighter));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.project-summary {
+    opacity: 0.9;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.project-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Expanded Details */
+.project-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.project-details.expanded {
+    max-height: 2000px;
+}
+
+.details-content {
+    padding: 2rem;
+    /* Increased from 1.5rem */
+    max-width: 1000px;
+    /* Added max-width constraint */
+    margin: 0 auto;
+    /* Center the content */
+}
+
+.detail-section {
+    margin-bottom: 1.5rem;
+    color: rgb(220, 220, 220);
+}
+
+.detail-section h4 {
+    color: rgb(220, 220, 220);
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+.detail-section p,
+.detail-section ul {
+    line-height: 1.8;
+    /* Increased from 1.6 */
+    font-size: 1rem;
+}
+
+.detail-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detail-section li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.detail-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: white;
+    font-weight: heavy;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-item {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.expand-indicator {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.project-details.expanded+.project-header .expand-indicator {
+    transform: rotate(180deg);
+}
+
+.select-filters {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.select-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.select-group label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.filter-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid gray;
+    border-radius: 25px;
+    background: white;
+    font-size: 0.9rem;
+    min-width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Expand button styles */
+.expand-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.show-more-btn {
+    background: linear-gradient(135deg, var(--primary-color), rgb(var(--primary-color-darker)));
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.show-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.show-more-btn:active {
+    transform: translateY(0);
+}

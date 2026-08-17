@@ -1,0 +1,116 @@
+/* Mobile overrides for the custom sections. */
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .project-header {
+        padding: 1rem;
+    }
+
+    .details-content {
+        padding: 1rem;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .filter-container {
+        justify-content: center;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tech-list {
+        gap: 0.25rem;
+    }
+
+    .tech-item {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .select-filters {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filter-select {
+        min-width: 200px;
+    }
+
+    .hobbies-carousel-container {
+        padding: 0 30px;
+    }
+
+    .hobby-card {
+        width: 280px;
+    }
+
+    .hobbies-filter-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hobbies-filter-btn {
+        min-width: 200px;
+    }
+
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .skill-item img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .project-header {
+        padding: 0.75rem;
+    }
+
+    .project-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+    }
+
+    .project-summary {
+        font-size: 0.85rem;
+    }
+}
