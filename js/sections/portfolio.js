@@ -5,6 +5,24 @@ const MAX_INITIAL_PROJECTS = 6;
 let allProjects = [];
 let filteredProjects = [];
 
+/**
+ * Promotes `data-src` to `src` on any screenshot inside a card that has just been expanded,
+ * which is the moment the browser is first given a URL to fetch. Runs once per image: the
+ * attribute is removed on promotion, so re-expanding the card hits the HTTP cache instead.
+ * @param {HTMLElement} details - The .project-details element being expanded.
+ */
+function hydrateScreenshots(details) {
+    details.querySelectorAll('img[data-src]').forEach(img => {
+        const caption = img.parentElement.querySelector('figcaption');
+        img.addEventListener('load', () => caption && caption.remove(), { once: true });
+        img.addEventListener('error', () => {
+            if (caption) caption.textContent = 'Screenshot unavailable.';
+        }, { once: true });
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+    });
+}
+
 function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
     const container = document.getElementById('projects-container');
     const expandContainer = document.getElementById('expand-container');
@@ -41,6 +59,24 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         if (project.reportFile) {
             links.push(`<a href="pdfs/${project.reportFile}" target="_blank" class="project-link">📑 Report PDF</a>`);
         }
+        if (project.screenshotFile) {
+            links.push(`<a href="images/projects/${project.screenshotFile}" download class="project-link">🖼️ Download screenshot</a>`);
+        }
+
+        // The screenshot ships with `data-src` instead of `src`, so the browser has no URL to
+        // fetch on initial load. hydrateScreenshots() promotes it the first time the card is
+        // expanded. `loading="lazy"` would not help here: .project-details collapses with
+        // max-height:0, not display:none, so the image counts as visible and loads immediately.
+        const screenshotHtml = project.screenshotFile ? `
+            <div class="detail-section">
+                <h4>🖼️ Screenshot</h4>
+                <figure class="project-screenshot">
+                    <img data-src="images/projects/${project.screenshotFile}"
+                         alt="Screenshot of ${project.name}" decoding="async">
+                    <figcaption>Loading screenshot…</figcaption>
+                </figure>
+            </div>
+        ` : '';
 
         projectCard.innerHTML = `
     <div class="project-header">
@@ -53,7 +89,7 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         </div>
         <div class="expand-indicator">▼</div>
     </div>
-    <div class="project-details">
+    <div class="project-details${project.screenshotFile ? ' has-screenshot' : ''}">
         <div class="details-content">
             <div class="details-grid">
                 <div class="detail-section">
@@ -99,6 +135,7 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
                     ${project.learnings.map(learning => `<li>${learning}</li>`).join('')}
                 </ul>
             </div>
+            ${screenshotHtml}
         </div>
     </div>
 `;
@@ -118,6 +155,7 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
             if (!wasExpanded) {
                 details.classList.add('expanded');
                 projectCard.classList.add('expanded');
+                hydrateScreenshots(details);
 
                 // Smooth scroll to the expanded card
                 setTimeout(() => {

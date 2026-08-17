@@ -33,11 +33,15 @@ const iconMap = {
     'icon_tv': '📺',
     'icon_clock': '🔄',
     'icon_caddy': '🛒',
+    'icon_flow': '🔀',
+    'icon_donation': '💝',
 };
 
 
 class Project {
-    constructor(name, icon, description, shortDescription, context, duration, role, methodology, team, technologies, tools, learnings, githubUrl, videoUrl, reportFile, categories) {
+    // `screenshotFile` is optional: a file name under images/projects/. It is exposed as a
+    // download link only, never rendered inline, so cards stay light to load.
+    constructor(name, icon, description, shortDescription, context, duration, role, methodology, team, technologies, tools, learnings, githubUrl, videoUrl, reportFile, categories, screenshotFile = null) {
         this.name = name;
         this.icon = icon;
         this.description = description;
@@ -54,10 +58,59 @@ class Project {
         this.videoUrl = videoUrl;
         this.reportFile = reportFile;
         this.categories = categories;
+        this.screenshotFile = screenshotFile;
     }
 }
 
 const MOCKED_PROJECTS = [
+    new Project('Transneg Engine',
+        'icon_flow',
+        'Business Process Management platform built from scratch and deployed for several city halls and major insurance companies. It provides interactive forms, a low-code drag-and-drop process designer, and a plugin system for client-specific features. AWS integrations power intelligent document processing (IDP) for data extraction from uploaded documents, plus biometric verification with liveness detection and face matching against the ID card photo.',
+        'From-scratch BPM platform with low-code process design, IDP and biometric verification.',
+        'Transneg, Dominican Republic',
+        '2025 - 2026',
+        'Main developer',
+        'Ad-hoc',
+        ['Clément Torti'],
+        ['.NET', 'C#', 'Angular', 'SQL Server'],
+        ['Visual Studio', 'AWS'],
+        [
+            'Designed a low-code drag-and-drop process designer usable by non-developers.',
+            'Built a plugin architecture so each client can extend the engine without forking it.',
+            'Integrated AWS intelligent document processing to extract data from uploaded documents.',
+            'Implemented biometric verification: liveness detection and face matching against ID card photos.',
+            'Delivered a single platform serving both public sector (city halls) and insurance clients.'
+        ],
+        null,
+        null,
+        '',
+        [ProjectCategory.WEB],
+        'transneg-engine-flow-editor.png'),
+
+    new Project('Donation Platform',
+        'icon_donation',
+        'Responsive donation platform where donors give one-off or recurring contributions, follow their history and track their ranking among other donors. It issues a QR-coded donor card and generates donation reports. Numerous payment gateway integrations — PayPal, Visa and CardNet — provide multi-currency support and subscription-based recurring giving.',
+        'Responsive donation platform with QR donor cards, reports and multi-currency subscriptions.',
+        'Transneg, Dominican Republic',
+        '2025 - 2026',
+        'Main developer',
+        'Ad-hoc',
+        ['Clément Torti'],
+        ['React', '.NET', 'C#', 'SQL Server'],
+        ['Visual Studio'],
+        [
+            'Integrated PayPal, Visa and CardNet to cover both local and international donors.',
+            'Implemented multi-currency handling (DOP and USD) across one-off and recurring flows.',
+            'Built subscription management for recurring monthly donations.',
+            'Generated QR-coded donor cards and downloadable donation reports.',
+            'Designed a responsive interface usable from phone and desktop alike.'
+        ],
+        null,
+        null,
+        '',
+        [ProjectCategory.WEB],
+        'donation-platform-donor-dashboard.png'),
+
     // Ajout en bas de MOCKED_PROJECTS :
     new Project('Transneg TV',
         'icon_tv',
