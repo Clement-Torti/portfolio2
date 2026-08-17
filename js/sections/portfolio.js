@@ -272,6 +272,11 @@ function initializeFilters() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // Total of the whole catalogue, not the active filter, so the heading stays stable.
+    const total = document.getElementById('projects-total');
+    if (total) {
+        total.textContent = `(${MOCKED_PROJECTS.length})`;
+    }
     populateSelectFilters(MOCKED_PROJECTS);
     renderProjects();
     initializeFilters();

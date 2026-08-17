@@ -35,6 +35,7 @@ const iconMap = {
     'icon_caddy': '🛒',
     'icon_flow': '🔀',
     'icon_donation': '💝',
+    'icon_shield': '🛡️',
 };
 
 
@@ -111,6 +112,33 @@ const MOCKED_PROJECTS = [
         '',
         [ProjectCategory.WEB],
         'donation-platform-donor-dashboard.png'),
+
+    new Project('Insurance Core & Broker Platform',
+        'icon_shield',
+        'Insurance core paired with a sales platform serving both brokers and end customers. The core defines the available insurance products, runs the quotations, issues the policy PDFs and delivers them over WhatsApp and email; it is connected to a payment gateway and to an electronic invoicing service for the Dominican DGII. The broker platform handles broker management, commissions per insurance type, reconciliation with each broker, sales monitoring and a help desk. It is multi-currency with live exchange rates, and supports branch management.',
+        'Insurance core and broker sales platform: quotations, policy PDFs, payments and DGII e-invoicing.',
+        'Transneg, Dominican Republic',
+        '2025 - 2026',
+        'Main developer',
+        'Ad-hoc',
+        ['Clément Torti'],
+        ['.NET', 'C#', 'Angular', 'SQL Server'],
+        ['Visual Studio'],
+        [
+            'Modelled an insurance core defining the available products and running quotations.',
+            'Generated policy PDFs and delivered them automatically over WhatsApp and email.',
+            'Integrated a payment gateway to close the sale inside the platform.',
+            'Integrated the Dominican DGII electronic invoicing service.',
+            'Built broker management with commissions configurable per insurance type.',
+            'Implemented reconciliation with each broker and monitoring of their sales.',
+            'Added a help desk for brokers and end customers.',
+            'Handled multi-currency operations with live exchange rates and branch management.'
+        ],
+        null,
+        null,
+        '',
+        [ProjectCategory.WEB],
+        ['insurance-broker-admin-panel.png', 'insurance-public-portal.jpg']),
 
     // Ajout en bas de MOCKED_PROJECTS :
     new Project('Transneg TV',
