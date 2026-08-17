@@ -18,6 +18,9 @@
     <!-- Custom styles (extracted from the former inline <style> block)
     ================================================== -->
     <link href="css/base/variables.css" rel="stylesheet" type="text/css" />
+    <link href="css/base/header.css" rel="stylesheet" type="text/css" />
+    <link href="css/sections/hero.css" rel="stylesheet" type="text/css" />
+    <link href="css/sections/services.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/education.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/experience.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/portfolio.css" rel="stylesheet" type="text/css" />
@@ -96,7 +99,7 @@
             </div>
             <!-- load external content close -->
 
-            <section aria-label="section" class="jarallax no-top-md no-bottom sm-pt-120 overflow-hidden">
+            <section id="hero" aria-label="section" class="jarallax no-top-md no-bottom overflow-hidden">
                 <img src="images/background/bg1.png" class="jarallax-img" alt="">
                 <div class="container mt-5">
                     <div class="row align-items-center">
@@ -149,9 +152,12 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a class="btn btn-main wow fadeInUp mt-5 pt-4 pb-4" style="z-index: 10;"
-                                data-wow-delay=".6s" href="pdfs/CV_English.pdf" download target="_blank">Download my CV
-                            </a>
+                            <div class="hero-cta">
+                                <a class="btn btn-main wow fadeInUp pt-4 pb-4" style="z-index: 10;"
+                                    data-wow-delay=".6s" href="pdfs/CV_English.pdf" download target="_blank">Download my
+                                    CV
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6 offset-md-1 jarallax">
                             <img src="images/misc/clement5.png" class="img-fluid wow fadeInUp" data-wow-delay=".8s"
@@ -166,7 +172,7 @@
                 </a>
                 <div class="de-gradient-edge-bottom"></div>
             </section>
-            <section id="section-services mt-5" class="no-bottom">
+            <section id="section-services" class="no-bottom mt-5">
                 <div class="container relative">
                     <div class="row">
                         <div class="col-md-12 text-center wow fadeInUp">
@@ -284,10 +290,10 @@
 
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Dec 2025 - Present</h3>
+                                        <h3 class="d_timeline-title">Dec 2025 - Dec 2026</h3>
                                         <a href="https://transnegrd.com/" target="_blank">
-                                            <img class="mt-3 ml-5" src="images/experience/transneg.png"
-                                                style="max-width: 200px;" class="img-fluid" alt="">
+                                            <img class="mt-3 ml-5 img-fluid" src="images/experience/transneg.png"
+                                                style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
                                                 class="d_title">System Team Manager Jr.</span>
@@ -318,8 +324,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">Nov 2023 - Dec 2025</h3>
                                         <a href="https://transnegrd.com/" target="_blank">
-                                            <img class="mt-3 ml-5" src="images/experience/transneg.png"
-                                                style="max-width: 200px;" class="img-fluid" alt="">
+                                            <img class="mt-3 ml-5 img-fluid" src="images/experience/transneg.png"
+                                                style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
                                                 class="d_title">Senior Developer (Angular/.NET/AWS)</span>
@@ -356,8 +362,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">Dec 2020 - Sep 2023</h3>
                                         <a href="https://edevice.com/" target="_blank">
-                                            <img class="mt-3 ml-5" src="images/experience/edevice.png"
-                                                style="max-width: 200px;" class="img-fluid" alt="">
+                                            <img class="mt-3 ml-5 img-fluid" src="images/experience/edevice.png"
+                                                style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">
                                                 IoT Developer & Tester (Python/Angular) - Apprenticeship</span>
@@ -388,8 +394,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">Apr 2019 - Jun 2019</h3>
                                         <a href="https://www.globallogic.com/uki/" target="_blank">
-                                            <img class="mt-3 ml-5" src="images/experience/ecs.png"
-                                                style="max-width: 150px;" class="img-fluid" alt="">
+                                            <img class="mt-3 ml-5 img-fluid" src="images/experience/ecs.png"
+                                                style="max-width: 150px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
                                                 class="d_title">Fullstack Developer (React/NodeJS) - Internship</span>
@@ -412,8 +418,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">Jun 2018 - Jul 2018</h3>
                                         <a href="https://yansys-medical.fr/en/home/" target="_blank">
-                                            <img class="mt-3 ml-5" src="images/experience/yansys.jpg"
-                                                style="max-width: 200px;" class="img-fluid" alt="">
+                                            <img class="mt-3 ml-5 img-fluid" src="images/experience/yansys.jpg"
+                                                style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
                                                 class="d_title">Mobile Developer (Swift) - Summer Job</span>
@@ -440,8 +446,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">2022 - 2023</h3>
                                         <a class="m-5" href="https://www.ucm.es/" target="_blank">
-                                            <img class="mt-2" src="images/schools/ucm.jpeg"
-                                                style="max-width: 200px; border-radius: 10px;" class="img-fluid"
+                                            <img class="mt-2 img-fluid" src="images/schools/ucm.jpeg"
+                                                style="max-width: 200px; border-radius: 10px;"
                                                 alt="UCM Madrid">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">
@@ -463,8 +469,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">2020 - 2023</h3>
                                         <a class="m-5" href="https://www.enseeiht.fr/fr/index.html" target="_blank">
-                                            <img class="mt-2" src="images/schools/enseeiht.jpg"
-                                                style="max-width: 200px; border-radius: 10px;" class="img-fluid"
+                                            <img class="mt-2 img-fluid" src="images/schools/enseeiht.jpg"
+                                                style="max-width: 200px; border-radius: 10px;"
                                                 alt="INP ENSEEIHT">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">
@@ -484,8 +490,8 @@
                                     <li class="d_timeline-item">
                                         <h3 class="d_timeline-title">2017 - 2019</h3>
                                         <a class="m-5" href="https://www.iut-clermont.fr/" target="_blank">
-                                            <img class="mt-2" src="images/schools/iut.jpeg"
-                                                style="max-width: 200px; border-radius: 10px;" class="img-fluid"
+                                            <img class="mt-2 img-fluid" src="images/schools/iut.jpeg"
+                                                style="max-width: 200px; border-radius: 10px;"
                                                 alt="IUT Clermont-Ferrand">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">

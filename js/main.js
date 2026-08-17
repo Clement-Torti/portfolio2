@@ -15,6 +15,21 @@ jQuery(document).ready(function () {
             resetCallback: function () { newTyped(); }
         });
     });
+
+    // designesia.js reveals the mobile menu by animating the header height, then
+    // collapses it back to the theme's hard-coded 90px. Mark the open state so the
+    // 60px clamp in css/base/header.css only applies once the bar is shut again, and
+    // wait out the 200ms close animation before clamping.
+    var header = document.querySelector('header');
+    $('#menu-btn').on('click', function () {
+        if (header.classList.contains('menu-open')) {
+            setTimeout(function () {
+                header.classList.remove('menu-open');
+            }, 250);
+        } else {
+            header.classList.add('menu-open');
+        }
+    });
 });
 
 const personalStartYear = 2016;

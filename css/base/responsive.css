@@ -2,17 +2,97 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
+    /* The theme sizes every h2 for a desktop column; .section-header h2 below is
+       more specific and keeps its own size. */
+    h2 {
+        font-size: 26px;
+        line-height: 32px;
+    }
+
     .section-header h2 {
         font-size: 2rem;
     }
 
+    /* "My Resume" and "About me" both carry the theme's 90px of section padding, so
+       ~180px of blank space piles up between the timelines and the profile photo. */
+    #section-resume {
+        padding-bottom: 20px;
+    }
+
+    #section-about {
+        padding-top: 40px;
+    }
+
+    #section-resume .d_timeline-item:last-child .d_timeline-text {
+        padding-bottom: 10px;
+    }
+
+    /* The heading, the six category buttons and the two selects together pushed the
+       first card most of a screen down. */
+    #section-portfolio {
+        padding-top: 45px;
+    }
+
+    #section-portfolio .space-border {
+        margin-bottom: 20px;
+    }
+
+    #section-portfolio .section-header p {
+        margin-bottom: 1rem;
+        font-size: 14px;
+    }
+
+    /* Two cards per row: one full-width card per row turns the portfolio into an
+       endless scroll on a phone. The card internals below were sized for a third of
+       a desktop row, so they shrink to match. */
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
     .project-header {
         padding: 1rem;
+    }
+
+    .project-icon {
+        width: 38px;
+        height: 38px;
+        margin-bottom: .6rem;
+        font-size: 1.1rem;
+    }
+
+    .project-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .project-summary {
+        font-size: .8rem;
+    }
+
+    /* Half a phone row leaves no space for the summary as well: a collapsed card
+       carries the title and its tags, and the summary comes with the details. */
+    .project-card:not(.expanded) .project-summary {
+        display: none;
+    }
+
+    .project-tags {
+        gap: .3rem;
+        margin-top: .6rem;
+    }
+
+    .project-tag {
+        padding: .2rem .5rem;
+        font-size: .65rem;
+    }
+
+    .expand-indicator {
+        top: .85rem;
+        right: .85rem;
+        width: 24px;
+        height: 24px;
+        font-size: .9rem;
     }
 
     .details-content {
@@ -25,13 +105,17 @@
         gap: 2rem;
     }
 
+    /* Six pill buttons sized for a desktop row wrapped into three tall rows. */
     .filter-container {
         justify-content: center;
+        gap: 6px;
+        margin-bottom: 1rem;
     }
 
     .filter-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 6px 12px;
+        border-width: 1px;
+        font-size: 0.78rem;
     }
 
     .project-links {
@@ -48,31 +132,72 @@
         padding: 0.2rem 0.5rem;
     }
 
+    /* Side by side rather than stacked: the two selects then cost one row instead of
+       two, and each still holds its longest option ("All Technologies"). */
     .select-filters {
-        flex-direction: column;
-        gap: 1rem;
+        gap: .5rem;
+        margin: 0 0 1.25rem;
+    }
+
+    .select-group {
+        flex: 1;
     }
 
     .filter-select {
-        min-width: 200px;
+        width: 100%;
+        min-width: 0;
+        padding: .4rem .75rem;
+        font-size: .8rem;
+    }
+
+    .expand-container {
+        margin-top: 1.25rem;
+    }
+
+    .show-more-btn {
+        padding: .6rem 1.25rem;
+        font-size: .9rem;
+    }
+
+    #section-hobby {
+        padding-top: 45px;
+    }
+
+    #section-hobby .space-border {
+        margin-bottom: 20px;
+    }
+
+    #section-hobby .section-header p {
+        margin-bottom: 0;
+        font-size: 14px;
     }
 
     .hobbies-carousel-container {
+        margin: 1rem 0 0;
         padding: 0 30px;
+    }
+
+    .hobbies-carousel {
+        gap: 1rem;
     }
 
     .hobby-card {
         width: 280px;
+        padding: 1rem;
     }
 
+    /* Three buttons wide enough to stack into three full rows; as pills on one row
+       they cost a third of that, matching the portfolio filters above. */
     .hobbies-filter-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        gap: 6px;
+        margin: 1rem 0 0;
     }
 
     .hobbies-filter-btn {
-        min-width: 200px;
+        min-width: 0;
+        padding: 6px 12px;
+        border-width: 1px;
+        font-size: 0.78rem;
     }
 
     .carousel-arrow {
@@ -92,25 +217,23 @@
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
     .project-header {
         padding: 0.75rem;
     }
 
+    /* Below the values in the 768px block above, not back up to a desktop size:
+       these cards are now half of an already narrow row. */
     .project-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
     }
 
     .project-title {
-        font-size: 1.1rem;
+        font-size: .95rem;
     }
 
     .project-summary {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
     }
 }

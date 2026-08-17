@@ -1,0 +1,16 @@
+/* Header overrides, mostly for the mobile bar. */
+
+/* Below 993px the theme hides the logo and the menu, so the bar holds nothing but
+   the burger button — the 90px it keeps eats a fifth of a phone screen.
+   designesia.js animates the header height to reveal the menu and then collapses
+   it back to that hard-coded 90px, so the closed state needs !important; the
+   .menu-open class (set in js/main.js) keeps the open/close animation itself
+   untouched. .header-mobile only exists below 993px. */
+header.header-mobile:not(.menu-open) {
+    height: 60px !important;
+}
+
+/* The theme drops the menu panel 90px down, to clear the taller bar. */
+header.header-mobile #mainmenu {
+    top: 60px;
+}

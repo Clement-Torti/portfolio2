@@ -1,0 +1,92 @@
+/* Hero: the intro block and its "Download my CV" call to action. */
+
+/* The button used to carry Bootstrap's mt-5; the wrapper owns the spacing now so
+   the mobile rules below can also centre it. */
+.hero-cta {
+    margin-top: 3rem;
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* The bar sits above the hero rather than over it, so the theme's 90px of section
+       padding (plus the container's own 3rem margin) was all dead space under it. */
+    #hero {
+        padding-top: 32px;
+    }
+
+    #hero .container {
+        margin-top: 0 !important;
+    }
+
+    /* Desktop-only air above the headline (the other .spacer-10, further down the
+       column, still separates the copy from the language list). */
+    #hero .spacer-10:first-child {
+        height: 0;
+    }
+
+    /* The profile photo below is a cut-out with a tall transparent top edge, so it
+       brings its own gap — the button needs air above it, not under it. */
+    .hero-cta {
+        margin-top: 28px;
+        margin-bottom: 6px;
+        text-align: center;
+    }
+
+    /* Justified text opens huge word gaps at phone width (inline style, hence the
+       !important). */
+    #hero p {
+        text-align: left !important;
+    }
+
+    /* 40px comes from an inline style meant for the desktop column. */
+    #hero .fix-title {
+        font-size: 30px !important;
+        line-height: 1.15;
+    }
+
+    /* The job title is the longest line of the three, so it goes smaller still. */
+    #hero .fix-title p {
+        font-size: 22px;
+        line-height: 1.2;
+        margin-top: 2px;
+    }
+
+    /* The theme lays these out as inline-block chips divided by a border-left, which
+       at phone width wraps into ragged columns with rules of mismatched heights.
+       Rebuilt as two rows: the language line, then the degree beside the badge. */
+    #hero .list_location {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px 18px;
+        margin-bottom: 0;
+    }
+
+    #hero .list_location li {
+        margin-right: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    #hero .list_location li:first-child {
+        /* Own row, with a hairline standing in for the vertical rules. */
+        flex: 1 0 100%;
+        padding-bottom: 14px;
+        border-bottom: solid 1px rgba(0, 0, 0, .15);
+    }
+
+    /* "French" is a block heading on desktop; here it leads the row of flags. */
+    #hero .list_location li:first-child span {
+        display: inline;
+        margin-right: 4px;
+    }
+
+    /* Pushes the AWS badge to the far end of the second row. */
+    #hero .list_location li:last-child {
+        margin-left: auto;
+    }
+
+    #hero .list_location li:last-child img {
+        max-width: 68px !important;
+    }
+}

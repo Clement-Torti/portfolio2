@@ -9,3 +9,37 @@
 .d_timeline-item>a>img {
     margin-left: 40px;
 }
+
+@media only screen and (max-width: 767px) {
+
+    /* The indents stack up on a phone — 30px of container, the education column's
+       own .p-4, the timeline's rule and then the text's 40px of padding — leaving
+       the copy in a sliver barely a dozen characters wide. */
+    #section-resume .p-4 {
+        padding: .5rem !important;
+    }
+
+    /* 3rem of margin around each school photo pushes it past the edge however
+       narrow the image itself is allowed to get. */
+    #section-resume .m-5 {
+        margin: 0 !important;
+    }
+
+    #section-resume .s_border {
+        font-size: 20px;
+    }
+
+    #section-resume .d_timeline-text {
+        padding-left: 15px;
+        padding-bottom: 25px;
+        font-size: 15px;
+        line-height: 1.6;
+        /* Justified in the markup, which opens huge word gaps this narrow. */
+        text-align: left !important;
+    }
+
+    /* Keeps each logo on the same left edge as the text underneath it. */
+    .d_timeline-item>a>img {
+        margin-left: 15px;
+    }
+}
