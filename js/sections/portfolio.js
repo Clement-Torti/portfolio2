@@ -59,22 +59,28 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         if (project.reportFile) {
             links.push(`<a href="pdfs/${project.reportFile}" target="_blank" class="project-link">📑 Report PDF</a>`);
         }
-        if (project.screenshotFile) {
-            links.push(`<a href="images/projects/${project.screenshotFile}" download class="project-link">🖼️ Download screenshot</a>`);
-        }
+        // Numbered only when there are several, so single-screenshot cards keep a plain label.
+        project.screenshots.forEach((file, i) => {
+            const label = project.screenshots.length > 1 ? `🖼️ Screenshot ${i + 1}` : '🖼️ Download screenshot';
+            links.push(`<a href="images/projects/${file}" download class="project-link">${label}</a>`);
+        });
 
-        // The screenshot ships with `data-src` instead of `src`, so the browser has no URL to
-        // fetch on initial load. hydrateScreenshots() promotes it the first time the card is
+        // Screenshots ship with `data-src` instead of `src`, so the browser has no URL to fetch
+        // on initial load. hydrateScreenshots() promotes them the first time the card is
         // expanded. `loading="lazy"` would not help here: .project-details collapses with
-        // max-height:0, not display:none, so the image counts as visible and loads immediately.
-        const screenshotHtml = project.screenshotFile ? `
+        // max-height:0, not display:none, so the images count as visible and load immediately.
+        const screenshotHtml = project.screenshots.length ? `
             <div class="detail-section">
-                <h4>🖼️ Screenshot</h4>
-                <figure class="project-screenshot">
-                    <img data-src="images/projects/${project.screenshotFile}"
-                         alt="Screenshot of ${project.name}" decoding="async">
-                    <figcaption>Loading screenshot…</figcaption>
-                </figure>
+                <h4>🖼️ ${project.screenshots.length > 1 ? 'Screenshots' : 'Screenshot'}</h4>
+                <div class="project-screenshots">
+                    ${project.screenshots.map((file, i) => `
+                        <figure class="project-screenshot">
+                            <img data-src="images/projects/${file}"
+                                 alt="Screenshot ${i + 1} of ${project.name}" decoding="async">
+                            <figcaption>Loading screenshot…</figcaption>
+                        </figure>
+                    `).join('')}
+                </div>
             </div>
         ` : '';
 
@@ -89,7 +95,7 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         </div>
         <div class="expand-indicator">▼</div>
     </div>
-    <div class="project-details${project.screenshotFile ? ' has-screenshot' : ''}">
+    <div class="project-details${project.screenshots.length ? ' has-screenshot' : ''}">
         <div class="details-content">
             <div class="details-grid">
                 <div class="detail-section">

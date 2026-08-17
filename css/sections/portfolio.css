@@ -130,6 +130,15 @@
     max-height: 3000px;
 }
 
+/* Several screenshots sit side by side rather than stacking, which keeps the expanded card
+   within the max-height above. Wraps to one column on narrow screens. */
+.project-screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
 .project-screenshot {
     margin: 0;
 }

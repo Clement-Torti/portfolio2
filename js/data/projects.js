@@ -39,9 +39,10 @@ const iconMap = {
 
 
 class Project {
-    // `screenshotFile` is optional: a file name under images/projects/. It is exposed as a
-    // download link only, never rendered inline, so cards stay light to load.
-    constructor(name, icon, description, shortDescription, context, duration, role, methodology, team, technologies, tools, learnings, githubUrl, videoUrl, reportFile, categories, screenshotFile = null) {
+    // `screenshots` is optional: one file name under images/projects/, or an array of them.
+    // It is normalised to an array below, and the images are fetched only once the card is
+    // expanded (see hydrateScreenshots in js/sections/portfolio.js), never on page load.
+    constructor(name, icon, description, shortDescription, context, duration, role, methodology, team, technologies, tools, learnings, githubUrl, videoUrl, reportFile, categories, screenshots = null) {
         this.name = name;
         this.icon = icon;
         this.description = description;
@@ -58,7 +59,7 @@ class Project {
         this.videoUrl = videoUrl;
         this.reportFile = reportFile;
         this.categories = categories;
-        this.screenshotFile = screenshotFile;
+        this.screenshots = screenshots ? [].concat(screenshots) : [];
     }
 }
 
@@ -258,12 +259,12 @@ const MOCKED_PROJECTS = [
 
     new Project('Touch Kiosk Payment System',
         'icon_kiosk',
-        'Fleet of touchscreen kiosks for public locations enabling users to pay utility bills. Integrated with card terminals and thermal receipt printers.',
-        'Self-service kiosks for public utility bill payments, integrated with printers and payment terminals.',
+        'Fleet of touchscreen kiosks for public locations enabling users to pay utility bills. Integrated with card terminals and thermal receipt printers. A centralised system now monitors the activity of every kiosk in the network and pushes automatic updates to the whole fleet, backed by an automated deployment pipeline. Adding a new kiosk to the network is a straightforward operation.',
+        'Self-service payment kiosks with a centralised console monitoring the fleet and rolling out automatic updates.',
         'Transneg, Dominican Republic',
         '2024 - 2026',
         'Main developer',
-        'Custom pipeline with test environments',
+        'Custom automated deployment pipeline with test environments',
         ['Clément Torti', 'Gorky Rojas'],
         ['Angular', '.NET'],
         ['Visual Studio', 'AWS EC2'],
@@ -273,12 +274,17 @@ const MOCKED_PROJECTS = [
             'Created a Windows background service to handle print requests.',
             'Defined receipt templates with the printer library.',
             'Designed architecture for a central server managing a fleet of kiosk nodes and terminals.',
+            'Built a centralised console monitoring the activity of every kiosk in the network.',
+            'Implemented fleet-wide automatic updates, rolled out remotely to every kiosk.',
+            'Set up an automated deployment pipeline so new versions reach the whole fleet without manual steps.',
+            'Reduced onboarding of a new kiosk to a simple, low-effort registration.',
             'Built a virtual test environment simulating kiosk behavior.'
         ],
         null,
         null,
         '',
-        [ProjectCategory.DESKTOP, ProjectCategory.EMBEDDED]),
+        [ProjectCategory.DESKTOP, ProjectCategory.EMBEDDED, ProjectCategory.WEB],
+        ['kiosk-payment-terminal.jpg', 'kiosk-admin-fleet-console.png']),
 
     new Project('National Theater Ticketing',
         'icon_theater',
