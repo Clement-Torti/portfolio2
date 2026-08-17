@@ -23,6 +23,87 @@ function hydrateScreenshots(details) {
     });
 }
 
+/* --- Screenshot preview -------------------------------------------------------------- */
+
+// Cached lightbox nodes, plus the gallery currently on display.
+let lightbox = null;
+const preview = { sources: [], index: 0, title: '', restoreOverflow: '' };
+
+function initScreenshotPreview() {
+    const root = document.getElementById('screenshot-lightbox');
+    if (!root) return;
+
+    lightbox = {
+        root,
+        img: document.getElementById('screenshot-lightbox-img'),
+        caption: document.getElementById('screenshot-lightbox-caption'),
+        prev: root.querySelector('[data-lightbox-prev]'),
+        next: root.querySelector('[data-lightbox-next]')
+    };
+
+    root.querySelectorAll('[data-lightbox-close]').forEach(el => {
+        el.addEventListener('click', closePreview);
+    });
+    lightbox.prev.addEventListener('click', () => stepPreview(-1));
+    lightbox.next.addEventListener('click', () => stepPreview(1));
+
+    // A single document-level listener, gated on the overlay being open, rather than one
+    // added and removed on every open.
+    document.addEventListener('keydown', event => {
+        if (root.hidden) return;
+        if (event.key === 'Escape') closePreview();
+        else if (event.key === 'ArrowLeft') stepPreview(-1);
+        else if (event.key === 'ArrowRight') stepPreview(1);
+    });
+}
+
+/**
+ * Opens the full-screen preview on one screenshot of a project.
+ * @param {string[]} sources - Every screenshot URL of the project, in card order.
+ * @param {number} index - Which of them to show first.
+ * @param {string} title - Project name, used for the caption and the alt text.
+ */
+function openPreview(sources, index, title) {
+    if (!lightbox || !sources.length) return;
+
+    preview.sources = sources;
+    preview.title = title;
+    // The page must not scroll behind the overlay; the previous value is put back on close
+    // so we do not clobber an inline overflow set elsewhere (e.g. the mobile menu).
+    preview.restoreOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const single = sources.length === 1;
+    lightbox.prev.hidden = single;
+    lightbox.next.hidden = single;
+    lightbox.root.hidden = false;
+    showPreview(index);
+}
+
+/** Displays the screenshot at `index`, wrapping around at both ends. */
+function showPreview(index) {
+    const { sources, title } = preview;
+    preview.index = (index + sources.length) % sources.length;
+
+    lightbox.img.src = sources[preview.index];
+    lightbox.img.alt = `Screenshot ${preview.index + 1} of ${title}`;
+    lightbox.caption.textContent = sources.length > 1
+        ? `${title} — ${preview.index + 1} / ${sources.length}`
+        : title;
+}
+
+function stepPreview(delta) {
+    showPreview(preview.index + delta);
+}
+
+function closePreview() {
+    lightbox.root.hidden = true;
+    // The src is kept so reopening the same screenshot hits the memory cache.
+    document.body.style.overflow = preview.restoreOverflow;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
 function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
     const container = document.getElementById('projects-container');
     const expandContainer = document.getElementById('expand-container');
@@ -76,7 +157,8 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
                     ${project.screenshots.map((file, i) => `
                         <figure class="project-screenshot">
                             <img data-src="images/projects/${file}"
-                                 alt="Screenshot ${i + 1} of ${project.name}" decoding="async">
+                                 alt="Screenshot ${i + 1} of ${project.name}" decoding="async"
+                                 role="button" tabindex="0" title="Click to preview">
                             <figcaption>Loading screenshot…</figcaption>
                         </figure>
                     `).join('')}
@@ -145,6 +227,22 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         </div>
     </div>
 `;
+
+        // Clicking a screenshot previews it instead of collapsing the card it sits in, so the
+        // event must not reach the card's own toggle handler below.
+        const screenshotSources = project.screenshots.map(file => `images/projects/${file}`);
+        projectCard.querySelectorAll('.project-screenshot img').forEach((img, i) => {
+            img.addEventListener('click', event => {
+                event.stopPropagation();
+                openPreview(screenshotSources, i, project.name);
+            });
+            img.addEventListener('keydown', event => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                event.stopPropagation();
+                openPreview(screenshotSources, i, project.name);
+            });
+        });
 
         // Add click event to toggle details
         projectCard.addEventListener('click', () => {
@@ -277,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (total) {
         total.textContent = `(${MOCKED_PROJECTS.length})`;
     }
+    initScreenshotPreview();
     populateSelectFilters(MOCKED_PROJECTS);
     renderProjects();
     initializeFilters();

@@ -1,0 +1,11 @@
+/* Experience / education timeline (.d_timeline in css/style.css). */
+
+/* The company logos sit in their own <a>, outside .d_timeline-text, so they never inherited
+   that element's 40px left padding and rendered flush against the item's border-left. The
+   markup asks for `ml-5`, which is Bootstrap 4 syntax and does not exist in the Bootstrap 5
+   build this site loads, so it contributed nothing. 40px matches .d_timeline-text at every
+   width (it has no responsive override), keeping each logo on the same left edge as the text
+   underneath it. */
+.d_timeline-item>a>img {
+    margin-left: 40px;
+}

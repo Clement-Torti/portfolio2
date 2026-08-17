@@ -19,6 +19,7 @@
     ================================================== -->
     <link href="css/base/variables.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/education.css" rel="stylesheet" type="text/css" />
+    <link href="css/sections/experience.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/portfolio.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/hobbies.css" rel="stylesheet" type="text/css" />
     <link href="css/sections/skills.css" rel="stylesheet" type="text/css" />
@@ -283,7 +284,39 @@
 
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Nov 2023 - Present</h3>
+                                        <h3 class="d_timeline-title">Dec 2025 - Present</h3>
+                                        <a href="https://transnegrd.com/" target="_blank">
+                                            <img class="mt-3 ml-5" src="images/experience/transneg.png"
+                                                style="max-width: 200px;" class="img-fluid" alt="">
+                                        </a>
+                                        <p class="d_timeline-text" style="text-align: justify;"><span
+                                                class="d_title">System Team Manager Jr.</span>
+                                            <a href="https://transnegrd.com/" target="_blank"><span
+                                                    class="d_company">Transneg Santo Domingo, Dominican
+                                                    Republic</span></a>
+                                            Role evolution: continuation of senior engineering work with added team
+                                            leadership, broader infrastructure scope, and closer involvement with
+                                            product and client discussions.<br /><br />
+
+                                            <i>Missions:</i><br />
+                                            - Supervise a small team of developers: assign tasks, offer technical
+                                            support, and lead weekly meetings to ensure alignment and continuous
+                                            delivery.<br />
+
+                                            - Remain hands-on on backend systems and APIs, contributing to the design,
+                                            maintenance, and evolution of production payment systems.<br />
+
+                                            - Work on both AWS-based and on-premise infrastructure, supporting
+                                            deployment, availability, and operational needs.<br />
+
+                                            - Participate earlier in project planning and client discussions, helping
+                                            clarify requirements and translate them into technical actions.<br />
+                                        </p>
+                                    </li>
+
+
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">Nov 2023 - Dec 2025</h3>
                                         <a href="https://transnegrd.com/" target="_blank">
                                             <img class="mt-3 ml-5" src="images/experience/transneg.png"
                                                 style="max-width: 200px;" class="img-fluid" alt="">
@@ -297,9 +330,6 @@
                                             financial APIs and backend systems.<br /><br />
 
                                             <i>Missions:</i><br />
-                                            - Supervise a small team of developers: assign tasks, offer support, and
-                                            lead weekly meetings to ensure alignment and continuous delivery.<br />
-
                                             - Maintain, improve, and evolve financial systems—including a high traffic
                                             payment API for major corporations and government entities, as well as
                                             direct debit services, touch-based kiosk interfaces, and an online payment
@@ -689,6 +719,25 @@
     </footer>
     <!-- footer close -->
     </div>
+
+    <!-- Full-screen preview for the portfolio screenshots. Kept outside #wrapper so the
+         fixed positioning is not affected by any transformed ancestor. -->
+    <div class="screenshot-lightbox" id="screenshot-lightbox" role="dialog" aria-modal="true"
+        aria-label="Screenshot preview" hidden>
+        <div class="screenshot-lightbox-backdrop" data-lightbox-close></div>
+        <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-close" data-lightbox-close
+            aria-label="Close preview">&times;</button>
+        <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-prev" data-lightbox-prev
+            aria-label="Previous screenshot">&#10094;</button>
+        <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-next" data-lightbox-next
+            aria-label="Next screenshot">&#10095;</button>
+        <figure class="screenshot-lightbox-figure">
+            <!-- No src until a screenshot is opened: an empty one refetches the page in some browsers. -->
+            <img id="screenshot-lightbox-img" alt="">
+            <figcaption id="screenshot-lightbox-caption"></figcaption>
+        </figure>
+    </div>
+
     <!-- Javascript Files
     ================================================== -->
     <script src="js/plugins.js"></script>

@@ -80,7 +80,6 @@ function renderModules(schoolCat, containerId) {
     clearButton.style.color = 'red';
     clearButton.addEventListener('click', () => {
         allFilterButtons.forEach(btn => btn.classList.remove('active')); // Deactivate other buttons
-        clearButton.classList.add('active'); // Keep 'X' active
         moduleCards.forEach(card => {
             card.style.display = 'none'; // Hide all modules
         });

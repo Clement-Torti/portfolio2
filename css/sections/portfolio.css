@@ -161,6 +161,130 @@
     padding: .75rem 0;
 }
 
+/* Thumbnails open the lightbox below, so they advertise themselves as clickable. */
+.project-screenshot img {
+    cursor: zoom-in;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.project-screenshot img:hover,
+.project-screenshot img:focus-visible {
+    border-color: rgba(255, 255, 255, .5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+    outline: none;
+}
+
+/* Screenshot preview (lightbox) */
+.screenshot-lightbox {
+    position: fixed;
+    inset: 0;
+    /* Above the sticky header (20000) and every other stacking context on the page. */
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+}
+
+/* The display:flex above would otherwise defeat the `hidden` attribute. */
+.screenshot-lightbox[hidden] {
+    display: none;
+}
+
+.screenshot-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .9);
+}
+
+.screenshot-lightbox-figure {
+    position: relative;
+    margin: 0;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* width/height stay auto so the image keeps its own ratio; the max-height leaves room for
+   the caption underneath. */
+.screenshot-lightbox-figure img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 10rem);
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .6);
+}
+
+.screenshot-lightbox-figure figcaption {
+    color: rgb(220, 220, 220);
+    font-size: 14px;
+    padding-top: .75rem;
+}
+
+.screenshot-lightbox-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: solid 1px rgba(255, 255, 255, .25);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.screenshot-lightbox-btn:hover {
+    background: rgba(255, 255, 255, .3);
+}
+
+.screenshot-lightbox-btn[hidden] {
+    display: none;
+}
+
+.screenshot-lightbox-close {
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+}
+
+.screenshot-lightbox-prev,
+.screenshot-lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+}
+
+.screenshot-lightbox-prev {
+    left: 1.25rem;
+}
+
+.screenshot-lightbox-next {
+    right: 1.25rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .screenshot-lightbox {
+        padding: 4.5rem .5rem;
+    }
+
+    .screenshot-lightbox-prev {
+        left: .35rem;
+    }
+
+    .screenshot-lightbox-next {
+        right: .35rem;
+    }
+}
+
 .details-content {
     padding: 2rem;
     /* Increased from 1.5rem */
