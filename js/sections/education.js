@@ -42,16 +42,26 @@ function renderModules(schoolCat, containerId) {
 `;
 
 
+    // Nothing is shown until a module is picked, so the section has to say so —
+    // otherwise it reads as a row of buttons above an empty box. It steps aside once
+    // a module is on screen and comes back with the clear button below.
+    const hintHtml = `
+    <p class="modules-hint text-center">
+        <i class="fa fa-hand-pointer-o"></i> Click a module to reveal its details
+    </p>
+`;
+
     // Combine and inject the HTML
     container.innerHTML = `
     <div class="modules-container">
-        <h4 class="text-center mb-4">Modules Studied</h4>${filtersHtml}
+        <h4 class="text-center mb-2">Modules Studied</h4>${hintHtml}${filtersHtml}
         ${modulesHtml}
     </div>`;
 
     // Get all filter buttons and module cards after injecting HTML
     const moduleCards = container.querySelectorAll('.module-card');
     const allFilterButtons = container.querySelectorAll('.module-filter-btn');
+    const hint = container.querySelector('.modules-hint');
 
     // Add event listeners for all category filter buttons
     allFilterButtons.forEach(button => {
@@ -61,6 +71,7 @@ function renderModules(schoolCat, containerId) {
             button.classList.add('active');
 
             const selectedCategory = button.dataset.category;
+            hint.hidden = true;
 
             // Show/hide module cards based on the selected category
             moduleCards.forEach(card => {
@@ -83,6 +94,7 @@ function renderModules(schoolCat, containerId) {
         moduleCards.forEach(card => {
             card.style.display = 'none'; // Hide all modules
         });
+        hint.hidden = false; // Back to an empty list, so invite the click again
     });
     container.querySelector('.module-filters').prepend(clearButton); // Place 'X' button first
 
@@ -92,6 +104,7 @@ function renderModules(schoolCat, containerId) {
     if (initiallyActiveButton) {
         // Trigger the display of modules for the initially active category
         const selectedCategory = initiallyActiveButton.dataset.category;
+        hint.hidden = true;
         moduleCards.forEach(card => {
             if (card.dataset.category === selectedCategory) {
                 card.style.display = 'flex';

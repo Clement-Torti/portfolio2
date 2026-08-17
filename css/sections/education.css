@@ -12,6 +12,23 @@
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+/* Sits between the "Modules Studied" heading and the buttons; js/sections/education.js
+   drops it as soon as a module is showing. */
+.modules-hint {
+    margin-bottom: 18px;
+    color: #888;
+    font-size: 13px;
+}
+
+.modules-hint i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.dark-scheme .modules-hint {
+    color: #aaa;
+}
+
 .module-filters {
     display: flex;
     flex-wrap: wrap;
