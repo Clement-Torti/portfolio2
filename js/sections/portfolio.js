@@ -16,7 +16,7 @@ function hydrateScreenshots(details) {
         const caption = img.parentElement.querySelector('figcaption');
         img.addEventListener('load', () => caption && caption.remove(), { once: true });
         img.addEventListener('error', () => {
-            if (caption) caption.textContent = 'Screenshot unavailable.';
+            if (caption) caption.textContent = t('portfolio.screenshot.error', 'Screenshot unavailable.');
         }, { once: true });
         img.src = img.dataset.src;
         img.removeAttribute('data-src');
@@ -86,7 +86,8 @@ function showPreview(index) {
     preview.index = (index + sources.length) % sources.length;
 
     lightbox.img.src = sources[preview.index];
-    lightbox.img.alt = `Screenshot ${preview.index + 1} of ${title}`;
+    lightbox.img.alt = t('portfolio.screenshot.alt', 'Screenshot {n} of {name}')
+        .replace('{n}', preview.index + 1).replace('{name}', title);
     lightbox.caption.textContent = sources.length > 1
         ? `${title} — ${preview.index + 1} / ${sources.length}`
         : title;
@@ -118,12 +119,17 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
     if (projects.length > MAX_INITIAL_PROJECTS && !showAll) {
         expandContainer.style.display = 'block';
         const btn = document.getElementById('show-more-btn');
-        btn.textContent = `Show ${projects.length - MAX_INITIAL_PROJECTS} More Projects`;
+        btn.textContent = t('portfolio.showMoreCount', 'Show {count} More Projects')
+            .replace('{count}', projects.length - MAX_INITIAL_PROJECTS);
     } else {
         expandContainer.style.display = 'none';
     }
 
-    projectsToShow.forEach((project, index) => {
+    projectsToShow.forEach((source, index) => {
+        // Wording in the active language; the technical fields (stacks, tools, links) are the
+        // same in both and come through untouched.
+        const project = I18N.project(source);
+
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
         projectCard.setAttribute('data-categories', project.categories.join(','));
@@ -135,14 +141,16 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
             links.push(`<a href="${project.githubUrl}" target="_blank" class="project-link">🔗 GitHub</a>`);
         }
         if (project.videoUrl) {
-            links.push(`<a href="${project.videoUrl}" target="_blank" class="project-link">🎥 Demo</a>`);
+            links.push(`<a href="${project.videoUrl}" target="_blank" class="project-link">${t('portfolio.link.demo', '🎥 Demo')}</a>`);
         }
         if (project.reportFile) {
-            links.push(`<a href="pdfs/${project.reportFile}" target="_blank" class="project-link">📑 Report PDF</a>`);
+            links.push(`<a href="pdfs/${project.reportFile}" target="_blank" class="project-link">${t('portfolio.link.report', '📑 Report PDF')}</a>`);
         }
         // Numbered only when there are several, so single-screenshot cards keep a plain label.
         project.screenshots.forEach((file, i) => {
-            const label = project.screenshots.length > 1 ? `🖼️ Screenshot ${i + 1}` : '🖼️ Download screenshot';
+            const label = project.screenshots.length > 1
+                ? t('portfolio.link.screenshotN', '🖼️ Screenshot {n}').replace('{n}', i + 1)
+                : t('portfolio.link.screenshot', '🖼️ Download screenshot');
             links.push(`<a href="images/projects/${file}" download class="project-link">${label}</a>`);
         });
 
@@ -152,14 +160,17 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
         // max-height:0, not display:none, so the images count as visible and load immediately.
         const screenshotHtml = project.screenshots.length ? `
             <div class="detail-section">
-                <h4>🖼️ ${project.screenshots.length > 1 ? 'Screenshots' : 'Screenshot'}</h4>
+                <h4>${project.screenshots.length > 1
+                ? t('portfolio.card.screenshots', '🖼️ Screenshots')
+                : t('portfolio.card.screenshot', '🖼️ Screenshot')}</h4>
                 <div class="project-screenshots">
                     ${project.screenshots.map((file, i) => `
                         <figure class="project-screenshot">
                             <img data-src="images/projects/${file}"
-                                 alt="Screenshot ${i + 1} of ${project.name}" decoding="async"
+                                 alt="${t('portfolio.screenshot.alt', 'Screenshot {n} of {name}')
+                .replace('{n}', i + 1).replace('{name}', project.name)}" decoding="async"
                                  role="button" tabindex="0" title="Click to preview">
-                            <figcaption>Loading screenshot…</figcaption>
+                            <figcaption>${t('portfolio.screenshot.loading', 'Loading screenshot…')}</figcaption>
                         </figure>
                     `).join('')}
                 </div>
@@ -188,37 +199,37 @@ function renderProjects(projects = MOCKED_PROJECTS, showAll = false) {
                             </div>
                         </div>
                     ` : ''}
-                    <h4>📋 Description</h4>
+                    <h4>${t('portfolio.card.description', '📋 Description')}</h4>
                     <p>${project.description}</p>
                 </div>
                 <div class="detail-section">
-                    <h4>🏢 Context & Duration</h4>
-                    <p><strong>Context:</strong> ${project.context}</p>
-                    <p><strong>Duration:</strong> ${project.duration}</p>
-                    <p><strong>Role:</strong> ${project.role}</p>
-                    ${project.methodology ? `<p><strong>Methodology:</strong> ${project.methodology}</p>` : ''}
+                    <h4>${t('portfolio.card.context', '🏢 Context & Duration')}</h4>
+                    <p><strong>${t('portfolio.card.contextLabel', 'Context:')}</strong> ${project.context}</p>
+                    <p><strong>${t('portfolio.card.durationLabel', 'Duration:')}</strong> ${project.duration}</p>
+                    <p><strong>${t('portfolio.card.roleLabel', 'Role:')}</strong> ${project.role}</p>
+                    ${project.methodology ? `<p><strong>${t('portfolio.card.methodologyLabel', 'Methodology:')}</strong> ${project.methodology}</p>` : ''}
                 </div>
             </div>
             <div class="details-grid">
                 <div class="detail-section">
-                    <h4>👥 Team</h4>
+                    <h4>${t('portfolio.card.team', '👥 Team')}</h4>
                     <p>${project.team.join(', ')}</p>
                 </div>
                 <div class="detail-section">
-                    <h4>🛠️ Technologies</h4>
+                    <h4>${t('portfolio.card.technologies', '🛠️ Technologies')}</h4>
                     <div class="tech-list">
                         ${project.technologies.map(tech => `<span class="tech-item">${tech}</span>`).join('')}
                     </div>
                 </div>
             </div>
             <div class="detail-section">
-                <h4>🔧 Tools</h4>
+                <h4>${t('portfolio.card.tools', '🔧 Tools')}</h4>
                 <div class="tech-list">
                     ${project.tools.map(tool => `<span class="tech-item">${tool}</span>`).join('')}
                 </div>
             </div>
             <div class="detail-section">
-                <h4>📚 Key Learnings</h4>
+                <h4>${t('portfolio.card.learnings', '📚 Key Learnings')}</h4>
                 <ul>
                     ${project.learnings.map(learning => `<li>${learning}</li>`).join('')}
                 </ul>
@@ -281,9 +292,10 @@ function populateSelectFilters(projects) {
     const techFilter = document.getElementById('tech-filter');
     const toolFilter = document.getElementById('tool-filter');
 
-    // Clear existing options (except first one)
-    techFilter.innerHTML = '<option value="">All Technologies</option>';
-    toolFilter.innerHTML = '<option value="">All Tools</option>';
+    // Clear existing options (except first one). The values below are technology and tool
+    // names, which stay as they are in both languages.
+    techFilter.innerHTML = `<option value="">${t('portfolio.filter.techs', 'All Technologies')}</option>`;
+    toolFilter.innerHTML = `<option value="">${t('portfolio.filter.tools', 'All Tools')}</option>`;
 
     // Get unique technologies and tools
     const allTechs = new Set();
@@ -379,4 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
     populateSelectFilters(MOCKED_PROJECTS);
     renderProjects();
     initializeFilters();
+
+    // Rebuild the section in the new language, keeping the filters and the expanded state.
+    I18N.onChange(() => {
+        const tech = document.getElementById('tech-filter').value;
+        const tool = document.getElementById('tool-filter').value;
+        populateSelectFilters(MOCKED_PROJECTS);
+        document.getElementById('tech-filter').value = tech;
+        document.getElementById('tool-filter').value = tool;
+        renderProjects(filteredProjects, isExpanded);
+    });
 });

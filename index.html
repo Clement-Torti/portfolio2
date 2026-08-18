@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <title>Portfolio</title>
@@ -52,15 +52,29 @@
                             </div>
                             <div class="de-flex-col header-col-right">
                                 <ul id="mainmenu">
-                                    <li><a class="active" href="#top">Home<span></span></a></li>
-                                    <li><a href="#section-portfolio">Portfolio<span></span></a></li>
-                                    <li><a href="#section-resume">My Resume<span></span></a></li>
-                                    <li><a href="#section-about">About Me<span></span></a></li>
-                                    <li><a href="#section-hobby">Hobbies<span></span></a></li>
-                                    <li><a href="#section-contact">Contact Me<span></span></a></li>
+                                    <li><a class="active" href="#top" data-i18n-text="nav.home">Home<span></span></a>
+                                    </li>
+                                    <li><a href="#section-portfolio" data-i18n-text="nav.portfolio">Portfolio<span></span></a>
+                                    </li>
+                                    <li><a href="#section-resume" data-i18n-text="nav.resume">My Resume<span></span></a>
+                                    </li>
+                                    <li><a href="#section-about" data-i18n-text="nav.about">About Me<span></span></a>
+                                    </li>
+                                    <li><a href="#section-hobby" data-i18n-text="nav.hobbies">Hobbies<span></span></a>
+                                    </li>
+                                    <li><a href="#section-contact" data-i18n-text="nav.contact">Contact Me<span></span></a>
+                                    </li>
 
                                 </ul>
                                 <div class="menu_side_area">
+                                    <!-- Language switch: the buttons are wired in js/i18n/i18n.js. -->
+                                    <div class="lang-switch" role="group" aria-label="Language"
+                                        data-i18n-attrs="aria-label:nav.aria">
+                                        <button type="button" class="lang-btn" data-lang="en"
+                                            aria-pressed="true">EN</button>
+                                        <button type="button" class="lang-btn" data-lang="fr"
+                                            aria-pressed="false">FR</button>
+                                    </div>
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
@@ -88,7 +102,7 @@
                     <a href="https://wa.me/18293454577" target="_blank"><i class="fa fa-whatsapp fa-lg"></i></a>
                     <a href="mailto:clement.torti@hotmail.fr" target="_blank"><i class="fa fa-envelope fa-lg"></i></a>
                 </div>
-                <span>Contact me</span>
+                <span data-i18n="contact.float">Contact me</span>
             </div>
             <!-- float text close -->
 
@@ -107,7 +121,8 @@
                             <div class="spacer-10"></div>
                             <div class="h1 wow fadeInUp .medium-screen moving-title" style="font-size: 40px;"
                                 data-wow-delay=".6s">
-                                Hi, I am <span class="id-color">Clément Torti</span><br> I am a
+                                <span data-i18n-html="hero.intro">Hi, I am <span class="id-color">Clément
+                                        Torti</span><br> I am a</span>
                                 <div class="typed-strings">
                                     <p>Technical Lead</p>
                                     <p>Software Engineer</p>
@@ -119,13 +134,15 @@
 
                             <div class="h1 wow fadeInUp .medium-screen fix-title" style="font-size: 40px;"
                                 data-wow-delay=".6s">
-                                Hi, I am <span class="id-color">Clément Torti</span><br> I am a
+                                <span data-i18n-html="hero.intro">Hi, I am <span class="id-color">Clément
+                                        Torti</span><br> I am a</span>
                                 <div class="">
-                                    <p>Technical Lead & Software Engineer</p>
+                                    <p data-i18n="hero.title.fixed">Technical Lead & Software Engineer</p>
                                 </div>
                             </div>
 
-                            <p style="text-align: justify; line-height: 1.5;" class="wow fadeInUp" data-wow-delay=".6s">
+                            <p style="text-align: justify; line-height: 1.5;" class="wow fadeInUp" data-wow-delay=".6s"
+                                data-i18n-html="hero.text">
                                 Passionate about computer science, I enjoy <b>exploring new technologies</b> and
                                 designing <b>refined architectural ecosystems</b> that support the company's business
                                 goals and bring additional value to the products. Guided by curiosity and a commitment 
@@ -135,14 +152,14 @@
                             </p>                            
                             <div class="spacer-10"></div>
                             <ul class="list_location wow fadeInUp" data-wow-delay=".8s">
-                                <li><span>French</span>
+                                <li><span data-i18n="hero.native">French</span>
                                     <span role="img" aria-label="speaking" style="display: inline; font-family: inherit; font-size: inherit; font-weight: normal; margin: 0 2px;">🗣️</span>
                                     <img src="https://flagcdn.com/16x12/fr.png" alt="French" style="margin: 0 2px;">
                                     <img src="https://flagcdn.com/16x12/gb.png" alt="English" style="margin: 0 2px;">
                                     <img src="https://flagcdn.com/16x12/es.png" alt="Spanish" style="margin: 0 2px;">
                                     <img src="https://flagcdn.com/16x12/sa.png" alt="Arabic" style="margin: 0 2px;">
                                 </li>
-                                <li>
+                                <li data-i18n-text="hero.degree">
                                     <span id="experience-years"></span> Engineering degree
                                 </li>
                                 <li>
@@ -154,8 +171,8 @@
                             </ul>
                             <div class="hero-cta">
                                 <a class="btn btn-main wow fadeInUp pt-4 pb-4" style="z-index: 10;"
-                                    data-wow-delay=".6s" href="pdfs/CV_English.pdf" download target="_blank">Download my
-                                    CV
+                                    data-wow-delay=".6s" href="pdfs/CV_English.pdf" download target="_blank"
+                                    data-i18n-text="hero.cv" data-i18n-attrs="href:hero.cv.file">Download my CV
                                 </a>
                             </div>
                         </div>
@@ -176,7 +193,7 @@
                 <div class="container relative">
                     <div class="row">
                         <div class="col-md-12 text-center wow fadeInUp">
-                            <h2>What I do</h2>
+                            <h2 data-i18n="services.title">What I do</h2>
                             <div class="space-border"></div>
                         </div>
                         <div class="spacer-single"></div>
@@ -186,8 +203,8 @@
                                     <div class="d-inner">
                                         <i class="icon_tools id-color"></i>
                                         <div class="text">
-                                            <h3>Technical Expertise</h3>
-                                            <p id="tech-exp">
+                                            <h3 data-i18n="services.tech.title">Technical Expertise</h3>
+                                            <p id="tech-exp" data-i18n-html="services.tech.text">
                                               <span id="exp-years">X</span>+ years of professional experience in programming,
                                               networking, infrastructure, and databases — empowered by a responsible use of AI.
                                             </p>
@@ -199,8 +216,8 @@
                                 <div class="de_3d-box">
                                     <div class="d-inner">
                                         <i class="icon_group id-color"></i>
-                                        <div class="text">
-                                            <h3>Team Leadership</h3>
+                                        <div class="text" data-i18n-text="services.team.text">
+                                            <h3 data-i18n="services.team.title">Team Leadership</h3>
                                             Effective team management by aligning members toward a common goal,
                                             fostering knowledge sharing, and leveraging organizational tools and
                                             efficient meetings.
@@ -212,8 +229,8 @@
                                 <div class="de_3d-box">
                                     <div class="d-inner">
                                         <i class="icon_piechart id-color"></i>
-                                        <div class="text">
-                                            <h3>Market Analysis</h3>
+                                        <div class="text" data-i18n-text="services.market.text">
+                                            <h3 data-i18n="services.market.title">Market Analysis</h3>
                                             Applying technology to drive business success by adding value to products
                                             and creating a competitive edge.
                                             <br>
@@ -233,21 +250,28 @@
             <section id="section-portfolio" class="no-bottom">
                 <div class="container relative">
                     <div class="section-header" style="text-align: center;">
-                        <h2>Portfolio</h2>
+                        <h2 data-i18n="portfolio.title">Portfolio</h2>
                         <div class="space-border"></div>
-                        <p>All projects I worked on <span id="projects-total"></span></p>
+                        <p data-i18n-text="portfolio.subtitle">All projects I worked on <span id="projects-total"></span>
+                        </p>
                     </div>
 
                     <div class="filter-container">
-                        <button class="filter-btn active" data-filter="ALL">All Projects</button>
-                        <button class="filter-btn" data-filter="WEB">Web</button>
-                        <button class="filter-btn" data-filter="MOBILE">Mobile</button>
-                        <button class="filter-btn" data-filter="DESKTOP">Desktop</button>
-                        <button class="filter-btn" data-filter="CONSOLE">Console</button>
-                        <button class="filter-btn" data-filter="EMBEDDED">Embedded</button>
+                        <button class="filter-btn active" data-filter="ALL" data-i18n="portfolio.filter.all">All
+                            Projects</button>
+                        <button class="filter-btn" data-filter="WEB" data-i18n="portfolio.filter.web">Web</button>
+                        <button class="filter-btn" data-filter="MOBILE"
+                            data-i18n="portfolio.filter.mobile">Mobile</button>
+                        <button class="filter-btn" data-filter="DESKTOP"
+                            data-i18n="portfolio.filter.desktop">Desktop</button>
+                        <button class="filter-btn" data-filter="CONSOLE"
+                            data-i18n="portfolio.filter.console">Console</button>
+                        <button class="filter-btn" data-filter="EMBEDDED"
+                            data-i18n="portfolio.filter.embedded">Embedded</button>
                     </div>
 
-                    <!-- New select filters -->
+                    <!-- New select filters. The "all" options are rebuilt by the section script,
+                         which translates them there. -->
                     <div class="select-filters">
                         <div class="select-group">
                             <select id="tech-filter" class="filter-select">
@@ -277,7 +301,7 @@
                 <div class="container relative">
                     <div class="row">
                         <div class="col-md-12 text-center wow fadeInUp">
-                            <h2>My Resume</h2>
+                            <h2 data-i18n="resume.title">My Resume</h2>
                             <div class="space-border"></div>
                         </div>
                     </div>
@@ -285,154 +309,181 @@
                     <div class="row gh-5">
                         <div class="col-lg-6 wow fadeInUp">
                             <div class="p-0 p-md-4">
-                                <h3 class="s_border">Experience</h3>
+                                <h3 class="s_border" data-i18n="resume.experience">Experience</h3>
                                 <ul class="d_timeline">
 
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Dec 2025 - Dec 2026</h3>
+                                        <h3 class="d_timeline-title" data-i18n="resume.transneg2.date">Dec 2025 - Dec
+                                            2026</h3>
                                         <a href="https://transnegrd.com/" target="_blank">
                                             <img class="mt-3 ml-5 img-fluid" src="images/experience/transneg.png"
                                                 style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">System Team Manager Jr.</span>
+                                                class="d_title" data-i18n="resume.transneg2.role">System Team Manager
+                                                Jr.</span>
                                             <a href="https://transnegrd.com/" target="_blank"><span
-                                                    class="d_company">Transneg Santo Domingo, Dominican
+                                                    class="d_company" data-i18n="resume.transneg2.company">Transneg
+                                                    Santo Domingo, Dominican
                                                     Republic</span></a>
-                                            Role evolution: continuation of senior engineering work with added team
-                                            leadership, broader infrastructure scope, and closer involvement with
-                                            product and client discussions.<br /><br />
+                                            <span data-i18n-html="resume.transneg2.text">
+                                                Role evolution: continuation of senior engineering work with added team
+                                                leadership, broader infrastructure scope, and closer involvement with
+                                                product and client discussions.<br /><br />
 
-                                            <i>Missions:</i><br />
-                                            - Supervise a small team of developers: assign tasks, offer technical
-                                            support, and lead weekly meetings to ensure alignment and continuous
-                                            delivery.<br />
+                                                <i>Missions:</i><br />
+                                                - Supervise a small team of developers: assign tasks, offer technical
+                                                support, and lead weekly meetings to ensure alignment and continuous
+                                                delivery.<br />
 
-                                            - Remain hands-on on backend systems and APIs, contributing to the design,
-                                            maintenance, and evolution of production payment systems.<br />
+                                                - Remain hands-on on backend systems and APIs, contributing to the
+                                                design, maintenance, and evolution of production payment systems.<br />
 
-                                            - Work on both AWS-based and on-premise infrastructure, supporting
-                                            deployment, availability, and operational needs.<br />
+                                                - Work on both AWS-based and on-premise infrastructure, supporting
+                                                deployment, availability, and operational needs.<br />
 
-                                            - Participate earlier in project planning and client discussions, helping
-                                            clarify requirements and translate them into technical actions.<br />
+                                                - Participate earlier in project planning and client discussions,
+                                                helping clarify requirements and translate them into technical
+                                                actions.<br />
+                                            </span>
                                         </p>
                                     </li>
 
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Nov 2023 - Dec 2025</h3>
+                                        <h3 class="d_timeline-title" data-i18n="resume.transneg1.date">Nov 2023 - Dec
+                                            2025</h3>
                                         <a href="https://transnegrd.com/" target="_blank">
                                             <img class="mt-3 ml-5 img-fluid" src="images/experience/transneg.png"
                                                 style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Senior Developer (Angular/.NET/AWS)</span>
+                                                class="d_title" data-i18n="resume.transneg1.role">Senior Developer
+                                                (Angular/.NET/AWS)</span>
                                             <a href="https://transnegrd.com/" target="_blank"><span
-                                                    class="d_company">Transneg Santo Domingo, Dominican
+                                                    class="d_company" data-i18n="resume.transneg1.company">Transneg
+                                                    Santo Domingo, Dominican
                                                     Republic</span></a>
-                                            I co-lead national payment solution initiatives, with a strong focus on
-                                            financial APIs and backend systems.<br /><br />
+                                            <span data-i18n-html="resume.transneg1.text">
+                                                I co-lead national payment solution initiatives, with a strong focus on
+                                                financial APIs and backend systems.<br /><br />
 
-                                            <i>Missions:</i><br />
-                                            - Maintain, improve, and evolve financial systems—including a high traffic
-                                            payment API for major corporations and government entities, as well as
-                                            direct debit services, touch-based kiosk interfaces, and an online payment
-                                            platform.<br />
+                                                <i>Missions:</i><br />
+                                                - Maintain, improve, and evolve financial systems—including a high
+                                                traffic payment API for major corporations and government entities, as
+                                                well as direct debit services, touch-based kiosk interfaces, and an
+                                                online payment platform.<br />
 
-                                            - Work extensively with RESTful and SOAP APIs in the financial domain,
-                                            covering authentication flows, transaction processing, reconciliation, and
-                                            audit logging.<br />
+                                                - Work extensively with RESTful and SOAP APIs in the financial domain,
+                                                covering authentication flows, transaction processing, reconciliation,
+                                                and audit logging.<br />
 
-                                            - Help integrate platforms with acquiring networks such as CardNet and
-                                            CyberSource (Visa), and with local banks like Banco BHD, ensuring secure and
-                                            reliable payment experiences.<br />
+                                                - Help integrate platforms with acquiring networks such as CardNet and
+                                                CyberSource (Visa), and with local banks like Banco BHD, ensuring secure
+                                                and reliable payment experiences.<br />
 
-                                            - Manage and support our AWS-based infrastructure, including EC2, VPN
-                                            tunnels, pfSense firewall, and Cloudflare, maintaining performance and
-                                            security.<br />
+                                                - Manage and support our AWS-based infrastructure, including EC2, VPN
+                                                tunnels, pfSense firewall, and Cloudflare, maintaining performance and
+                                                security.<br />
 
-                                            - Oversee deployment and automation of software solutions to ensure high
-                                            availability and seamless updates.<br />
+                                                - Oversee deployment and automation of software solutions to ensure high
+                                                availability and seamless updates.<br />
+                                            </span>
                                         </p>
                                     </li>
 
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Dec 2020 - Sep 2023</h3>
+                                        <h3 class="d_timeline-title" data-i18n="resume.edevice.date">Dec 2020 - Sep
+                                            2023</h3>
                                         <a href="https://edevice.com/" target="_blank">
                                             <img class="mt-3 ml-5 img-fluid" src="images/experience/edevice.png"
                                                 style="max-width: 200px;" alt="">
                                         </a>
-                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title">
+                                        <p class="d_timeline-text" style="text-align: justify;"><span class="d_title"
+                                                data-i18n="resume.edevice.role">
                                                 IoT Developer & Tester (Python/Angular) - Apprenticeship</span>
                                             <a href="https://edevice.com/" target="_blank"><span
-                                                    class="d_company">eDevice Bordeaux, France</span></a>
-                                            I worked at an IT company providing connectivity solutions to the healthcare
-                                            industry. I was in charge of the design, development, and execution of
-                                            automated test scripts for electronic boards and web applications. These
-                                            boards were part of a patient hub that interfaces with various medical
-                                            sensors and transmits the collected data to healthcare professionals. For my
-                                            final-year project, I developed a web application for test script generation
-                                            using a MEAN fullstack architecture.
-                                            <br /><br />
+                                                    class="d_company" data-i18n="resume.edevice.company">eDevice
+                                                    Bordeaux, France</span></a>
+                                            <span data-i18n-html="resume.edevice.text">
+                                                I worked at an IT company providing connectivity solutions to the
+                                                healthcare industry. I was in charge of the design, development, and
+                                                execution of automated test scripts for electronic boards and web
+                                                applications. These boards were part of a patient hub that interfaces
+                                                with various medical sensors and transmits the collected data to
+                                                healthcare professionals. For my final-year project, I developed a web
+                                                application for test script generation using a MEAN fullstack
+                                                architecture.
+                                                <br /><br />
 
-                                            <i>Missions:</i><br />
-                                            - Writing electronic board integration test scripts in Python.<br />
+                                                <i>Missions:</i><br />
+                                                - Writing electronic board integration test scripts in Python.<br />
 
-                                            - Development of a modern web application using MEAN architecture for
-                                            writing Python test scripts.<br />
+                                                - Development of a modern web application using MEAN architecture for
+                                                writing Python test scripts.<br />
 
-                                            - Writing Cypress web tests.<br />
+                                                - Writing Cypress web tests.<br />
 
-                                            - Test acceptance, bug reporting, and documentation following a V
-                                            cycle.<br />
+                                                - Test acceptance, bug reporting, and documentation following a V
+                                                cycle.<br />
+                                            </span>
                                         </p>
                                     </li>
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Apr 2019 - Jun 2019</h3>
+                                        <h3 class="d_timeline-title" data-i18n="resume.ecs.date">Apr 2019 - Jun 2019
+                                        </h3>
                                         <a href="https://www.globallogic.com/uki/" target="_blank">
                                             <img class="mt-3 ml-5 img-fluid" src="images/experience/ecs.png"
                                                 style="max-width: 150px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Fullstack Developer (React/NodeJS) - Internship</span>
+                                                class="d_title" data-i18n="resume.ecs.role">Fullstack Developer
+                                                (React/NodeJS) - Internship</span>
                                             <a href="https://www.globallogic.com/uki/" target="_blank"><span
-                                                    class="d_company">ECS Digital London, UK</span></a>
-                                            Rebranded GlobalLogic, a London-based digital transformation service
-                                            company. I worked as part of a team to develop a web application used
-                                            internally for peer reviews. I was involved in fullstack development using a
-                                            MERN architecture. During this experience, I also discovered DevOps tools
-                                            and received communication training in English.<br /><br />
+                                                    class="d_company" data-i18n="resume.ecs.company">ECS Digital London,
+                                                    UK</span></a>
+                                            <span data-i18n-html="resume.ecs.text">
+                                                Rebranded GlobalLogic, a London-based digital transformation service
+                                                company. I worked as part of a team to develop a web application used
+                                                internally for peer reviews. I was involved in fullstack development
+                                                using a MERN architecture. During this experience, I also discovered
+                                                DevOps tools and received communication training in English.<br /><br />
 
-                                            <i>Missions:</i><br />
-                                            - Development of a fullStack web app from scratch according to DevOps
-                                            principles.<br />
-                                            - Technological watch for the project's new recruits, professional training,
-                                            and client presentation in English.
+                                                <i>Missions:</i><br />
+                                                - Development of a fullStack web app from scratch according to DevOps
+                                                principles.<br />
+                                                - Technological watch for the project's new recruits, professional
+                                                training, and client presentation in English.
+                                            </span>
                                         </p>
                                     </li>
 
                                     <li class="d_timeline-item">
-                                        <h3 class="d_timeline-title">Jun 2018 - Jul 2018</h3>
+                                        <h3 class="d_timeline-title" data-i18n="resume.yansys.date">Jun 2018 - Jul 2018
+                                        </h3>
                                         <a href="https://yansys-medical.fr/en/home/" target="_blank">
                                             <img class="mt-3 ml-5 img-fluid" src="images/experience/yansys.jpg"
                                                 style="max-width: 200px;" alt="">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;"><span
-                                                class="d_title">Mobile Developer (Swift) - Summer Job</span>
+                                                class="d_title" data-i18n="resume.yansys.role">Mobile Developer (Swift)
+                                                - Summer Job</span>
                                             <a href="https://yansys-medical.fr/en/home/" target="_blank"><span
-                                                    class="d_company">Yansys Vichy, France</span></a>
-                                            Medical software company. I was in charge of the development of the mobile
-                                            version of HurryCan, a web application for patient-doctor messaging. IOS
-                                            development in swift within an agile team.<br /><br />
+                                                    class="d_company" data-i18n="resume.yansys.company">Yansys Vichy,
+                                                    France</span></a>
+                                            <span data-i18n-html="resume.yansys.text">
+                                                Medical software company. I was in charge of the development of the
+                                                mobile version of HurryCan, a web application for patient-doctor
+                                                messaging. IOS development in swift within an agile team.<br /><br />
 
-                                            <i>Missions:</i><br />
-                                            - Development of a mobile application based on an existing web
-                                            application.<br />
-                                            - Integration into an agile team.
+                                                <i>Missions:</i><br />
+                                                - Development of a mobile application based on an existing web
+                                                application.<br />
+                                                - Integration into an agile team.
+                                            </span>
                                         </p>
                                     </li>
                                 </ul>
@@ -440,7 +491,7 @@
                         </div>
                         <div class="col-lg-6 wow fadeInUp">
                             <div class="p-4">
-                                <h3 class="s_border">Education</h3>
+                                <h3 class="s_border" data-i18n="resume.education">Education</h3>
                                 <ul class="d_timeline">
 
                                     <li class="d_timeline-item">
@@ -451,16 +502,20 @@
                                                 alt="UCM Madrid">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">
-                                            <span class="d_title">Master's in Computer Science</span>
+                                            <span class="d_title" data-i18n="resume.ucm.degree">Master's in Computer
+                                                Science</span>
                                             <a href="https://www.ucm.es/" target="_blank">
-                                                <span class="d_company">UCM Madrid, Spain</span>
+                                                <span class="d_company" data-i18n="resume.ucm.school">UCM Madrid,
+                                                    Spain</span>
                                             </a>
-                                            UCM Madrid offers a prestigious Master's program in Computer Science.
-                                            Located in Madrid, Spain, it provides a comprehensive curriculum covering
-                                            theoretical knowledge and practical applications. Students gain advanced
-                                            skills in software development, algorithms, AI, and data analysis. UCM's
-                                            cutting-edge facilities and industry collaborations create an ideal learning
-                                            environment.
+                                            <span data-i18n-html="resume.ucm.text">
+                                                UCM Madrid offers a prestigious Master's program in Computer Science.
+                                                Located in Madrid, Spain, it provides a comprehensive curriculum
+                                                covering theoretical knowledge and practical applications. Students gain
+                                                advanced skills in software development, algorithms, AI, and data
+                                                analysis. UCM's cutting-edge facilities and industry collaborations
+                                                create an ideal learning environment.
+                                            </span>
                                         </p>
                                         <div id="ucm-modules-container" class="d_timeline-text"></div>
 
@@ -474,15 +529,20 @@
                                                 alt="INP ENSEEIHT">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">
-                                            <span class="d_title">Engineering Program in Computer Science</span>
+                                            <span class="d_title" data-i18n="resume.enseeiht.degree">Engineering Program
+                                                in Computer Science</span>
                                             <a href="https://www.enseeiht.fr/fr/index.html" target="_blank">
-                                                <span class="d_company">INP ENSEEIHT, Toulouse, France</span>
+                                                <span class="d_company" data-i18n="resume.enseeiht.school">INP ENSEEIHT,
+                                                    Toulouse, France</span>
                                             </a>
-                                            Recognized as the 2nd best computer science engineering school in France,
-                                            ENSEEIHT Toulouse offers a prestigious program through alternating
-                                            work-study. Students develop technical skills in software development,
-                                            algorithms, AI, and data analysis. Hands-on projects and internships prepare
-                                            future engineers for success in the dynamic field of IT.
+                                            <span data-i18n-html="resume.enseeiht.text">
+                                                Recognized as the 2nd best computer science engineering school in
+                                                France, ENSEEIHT Toulouse offers a prestigious program through
+                                                alternating work-study. Students develop technical skills in software
+                                                development, algorithms, AI, and data analysis. Hands-on projects and
+                                                internships prepare future engineers for success in the dynamic field of
+                                                IT.
+                                            </span>
                                         </p>
                                         <div id="enseeiht-modules-container" class="d_timeline-text"></div>
                                     </li>
@@ -495,15 +555,19 @@
                                                 alt="IUT Clermont-Ferrand">
                                         </a>
                                         <p class="d_timeline-text" style="text-align: justify;">
-                                            <span class="d_title">DUT in Computer Science</span>
+                                            <span class="d_title" data-i18n="resume.iut.degree">DUT in Computer
+                                                Science</span>
                                             <a href="https://www.iut-clermont.fr/" target="_blank">
-                                                <span class="d_company">IUT Clermont-Ferrand, France</span>
+                                                <span class="d_company" data-i18n="resume.iut.school">IUT
+                                                    Clermont-Ferrand, France</span>
                                             </a>
-                                            IUT Clermont-Ferrand is known for its excellent computer science training.
-                                            Located in Aubière, France, it offers a practical curriculum aligned with
-                                            industry trends. Students gain expertise in programming, web/mobile
-                                            development, databases, networks, and information systems. Hands-on projects
-                                            and internships foster a dynamic learning experience.
+                                            <span data-i18n-html="resume.iut.text">
+                                                IUT Clermont-Ferrand is known for its excellent computer science
+                                                training. Located in Aubière, France, it offers a practical curriculum
+                                                aligned with industry trends. Students gain expertise in programming,
+                                                web/mobile development, databases, networks, and information systems.
+                                                Hands-on projects and internships foster a dynamic learning experience.
+                                            </span>
                                         </p>
                                         <div id="iut-modules-container" class="d_timeline-text"></div>
                                     </li>
@@ -526,8 +590,8 @@
                         <div class="col-md-6 wow fadeInUp">
                             <img src="images/misc/clement1.png" class="img-fluid" alt="Clement Profile"
                                 style="max-height: 500px;">
-                            <h2 class="mt-3">About me</h2>
-                            <p style="text-align: justify;">
+                            <h2 class="mt-3" data-i18n="about.title">About me</h2>
+                            <p style="text-align: justify;" data-i18n="about.text">
                                 I'm a passionate tech enthusiast with a strong curiosity for emerging technologies and a
                                 hands-on approach to learning. My interests span across software development—exploring
                                 modern frameworks and programming languages—as well as on-premise and cloud
@@ -542,7 +606,7 @@
                             <div class="skills-section">
                                 <!-- Programming Languages -->
                                 <div class="skill-category">
-                                    <h5>Programming Languages</h5>
+                                    <h5 data-i18n="about.skills.languages">Programming Languages</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">C#</span>
                                         <span class="skill-badge">JavaScript</span>
@@ -556,7 +620,7 @@
 
                                 <!-- Frameworks -->
                                 <div class="skill-category">
-                                    <h5>Frameworks</h5>
+                                    <h5 data-i18n="about.skills.frameworks">Frameworks</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">.NET</span>
                                         <span class="skill-badge">Node.js</span>
@@ -569,7 +633,7 @@
 
                                 <!-- Databases -->
                                 <div class="skill-category">
-                                    <h5>Databases</h5>
+                                    <h5 data-i18n="about.skills.databases">Databases</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">MySQL</span>
                                         <span class="skill-badge">SQL Server</span>
@@ -579,7 +643,7 @@
 
                                 <!-- Tools -->
                                 <div class="skill-category">
-                                    <h5>Tools</h5>
+                                    <h5 data-i18n="about.skills.tools">Tools</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">Git</span>
                                         <span class="skill-badge">Azure DevOps</span>
@@ -594,7 +658,7 @@
 
                                 <!-- Infrastructure and Networking -->
                                 <div class="skill-category">
-                                    <h5>Infrastructure</h5>
+                                    <h5 data-i18n="about.skills.infrastructure">Infrastructure</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">AWS</span>
                                         <span class="skill-badge">pfSense</span>
@@ -607,7 +671,7 @@
 
                                 <!-- AI -->
                                 <div class="skill-category">
-                                    <h5>AI</h5>
+                                    <h5 data-i18n="about.skills.ai">AI</h5>
                                     <div class="skills-grid">
                                         <span class="skill-badge">ChatGPT</span>
                                         <span class="skill-badge">Claude</span>
@@ -618,12 +682,12 @@
 
                                 <!-- Languages -->
                                 <div class="skill-category">
-                                    <h5>Languages</h5>
+                                    <h5 data-i18n="about.skills.spoken">Languages</h5>
                                     <div class="skills-grid">
-                                        <span class="skill-badge">French</span>
-                                        <span class="skill-badge">English</span>
-                                        <span class="skill-badge">Spanish</span>
-                                        <span class="skill-badge">Arabic</span>
+                                        <span class="skill-badge" data-i18n="about.skill.french">French</span>
+                                        <span class="skill-badge" data-i18n="about.skill.english">English</span>
+                                        <span class="skill-badge" data-i18n="about.skill.spanish">Spanish</span>
+                                        <span class="skill-badge" data-i18n="about.skill.arabic">Arabic</span>
                                     </div>
                                 </div>
                             </div>
@@ -636,15 +700,18 @@
             <section id="section-hobby" class="no-bottom">
                 <div class="container relative">
                     <div class="section-header" style="text-align: center;">
-                        <h2>Hobbies</h2>
+                        <h2 data-i18n="hobbies.title">Hobbies</h2>
                         <div class="space-border"></div>
-                        <p>My personal interests and passions</p>
+                        <p data-i18n="hobbies.subtitle">My personal interests and passions</p>
                     </div>
 
                     <div class="hobbies-filter-container">
-                        <button class="hobbies-filter-btn active" data-filter="LANGUAGES">Languages</button>
-                        <button class="hobbies-filter-btn" data-filter="GUITARE">Guitare</button>
-                        <button class="hobbies-filter-btn" data-filter="TECH">Tech</button>
+                        <button class="hobbies-filter-btn active" data-filter="LANGUAGES"
+                            data-i18n="hobbies.filter.languages">Languages</button>
+                        <button class="hobbies-filter-btn" data-filter="GUITARE"
+                            data-i18n="hobbies.filter.guitare">Guitare</button>
+                        <button class="hobbies-filter-btn" data-filter="TECH"
+                            data-i18n="hobbies.filter.tech">Tech</button>
                     </div>
 
                     <!-- Updated carousel structure -->
@@ -675,7 +742,7 @@
                 <div class="container z-index-1000">
                     <div class="row">
                         <div class="col-md-12 text-center wow fadeInUp">
-                            <h2>Contact me</h2>
+                            <h2 data-i18n="contact.title">Contact me</h2>
                             <div class="space-border"></div>
                         </div>
 
@@ -683,7 +750,7 @@
                         <div class="row text-center wow fadeInUp">
                             <div class="col-md-4">
                                 <div class="wm-1"></div>
-                                <h6>Email</h6>
+                                <h6 data-i18n="contact.email">Email</h6>
 
                                 <a href="mailto:clement.torti@hotmail.fr" target="_blank"><i
                                         class="fa fa-envelope fa-lg"></i>
@@ -697,9 +764,9 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="wm-1"></div>
-                                <h6>LinkedIn</h6>
-                                <a href="https://www.linkedin.com/in/cl%C3%A9ment-torti/" target="_blank"><i
-                                        class="fa fa-linkedin fa-lg"></i> My Profile</a>
+                                <h6 data-i18n="contact.linkedin">LinkedIn</h6>
+                                <a href="https://www.linkedin.com/in/cl%C3%A9ment-torti/" target="_blank"
+                                    data-i18n-text="contact.profile"><i class="fa fa-linkedin fa-lg"></i> My Profile</a>
                             </div>
                         </div>
                     </div>
@@ -729,14 +796,14 @@
     <!-- Full-screen preview for the portfolio screenshots. Kept outside #wrapper so the
          fixed positioning is not affected by any transformed ancestor. -->
     <div class="screenshot-lightbox" id="screenshot-lightbox" role="dialog" aria-modal="true"
-        aria-label="Screenshot preview" hidden>
+        aria-label="Screenshot preview" data-i18n-attrs="aria-label:portfolio.lightbox.label" hidden>
         <div class="screenshot-lightbox-backdrop" data-lightbox-close></div>
         <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-close" data-lightbox-close
-            aria-label="Close preview">&times;</button>
+            aria-label="Close preview" data-i18n-attrs="aria-label:portfolio.lightbox.close">&times;</button>
         <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-prev" data-lightbox-prev
-            aria-label="Previous screenshot">&#10094;</button>
+            aria-label="Previous screenshot" data-i18n-attrs="aria-label:portfolio.lightbox.prev">&#10094;</button>
         <button type="button" class="screenshot-lightbox-btn screenshot-lightbox-next" data-lightbox-next
-            aria-label="Next screenshot">&#10095;</button>
+            aria-label="Next screenshot" data-i18n-attrs="aria-label:portfolio.lightbox.next">&#10095;</button>
         <figure class="screenshot-lightbox-figure">
             <!-- No src until a screenshot is opened: an empty one refetches the page in some browsers. -->
             <img id="screenshot-lightbox-img" alt="">
@@ -750,6 +817,10 @@
     <script src="js/designesia.js"></script>
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
     <script src="form.js"></script>
+    <!-- Translations (the engine must come first: the section scripts read I18N.lang) -->
+    <script src="js/i18n/i18n.js"></script>
+    <script src="js/i18n/fr.js"></script>
+    <script src="js/i18n/fr-content.js"></script>
     <!-- Site data (must load before the section scripts that consume it) -->
     <script src="js/data/projects.js"></script>
     <script src="js/data/education.js"></script>

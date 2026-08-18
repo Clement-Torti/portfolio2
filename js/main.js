@@ -35,8 +35,22 @@ jQuery(document).ready(function () {
 const personalStartYear = 2016;
 const currentYear = new Date().getFullYear();
 const personalYears = currentYear - personalStartYear;
-document.getElementById("experience-years").innerText = `${personalYears}y+ programming`;
 const profesionalStartYear = 2020;
 const profesionalYears = currentYear - profesionalStartYear;
-document.getElementById("exp-years").innerText = `${profesionalYears}${document.getElementById("exp-years").innerText}`;
+
+/**
+ * Writes the two year counters into the copy. Called again after every language change: the
+ * sentences that hold them are replaced wholesale by the translation pass, placeholder and
+ * all.
+ */
+function updateExperienceCounters() {
+    document.getElementById("experience-years").innerText =
+        `${personalYears}${t('hero.years', 'y+ programming')}`;
+    document.getElementById("exp-years").innerText = profesionalYears;
+}
+
+// After DOMContentLoaded, so it runs once the translation pass (registered first, in
+// js/i18n/i18n.js) has put the sentences of the active language in place.
+document.addEventListener('DOMContentLoaded', updateExperienceCounters);
+I18N.onChange(updateExperienceCounters);
 document.getElementById("currentYear").textContent = currentYear;

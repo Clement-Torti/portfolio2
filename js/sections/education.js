@@ -16,12 +16,13 @@ function renderModules(schoolCat, containerId) {
     // Get unique module categories for this school (removed 'All')
     const categories = [...new Set(schoolModules.map(m => m.moduleCategory))];
 
-    // Create the filter buttons
+    // Create the filter buttons. data-category stays in English: it is the key the cards are
+    // matched on, only the label follows the language.
     const filtersHtml = `
     <div class="module-filters">
         ${categories.map((cat, index) => `
             <button class="module-filter-btn" data-category="${cat}">
-                ${cat}
+                ${t('modules.category.' + cat, cat)}
             </button>
         `).join('')}
     </div>
@@ -30,14 +31,17 @@ function renderModules(schoolCat, containerId) {
     // Create the module cards
     const modulesHtml = `
     <div class="module-list">
-        ${schoolModules.map(module => `
+        ${schoolModules.map(source => {
+        const module = I18N.module(source);
+        return `
             <div class="module-card mb-2" data-category="${module.moduleCategory}">
                 <h5>${module.name}</h5>
                 <p>${module.description}</p>
-                <span class="duration">Duration: ${module.duration}</span>
-                <p class="duration">Teacher(s): ${module.teachers.join(', ')}</p>
+                <span class="duration">${t('modules.duration', 'Duration:')} ${module.duration}</span>
+                <p class="duration">${t('modules.teachers', 'Teacher(s):')} ${module.teachers.join(', ')}</p>
             </div>
-        `).join('')}
+        `;
+    }).join('')}
     </div>
 `;
 
@@ -47,14 +51,14 @@ function renderModules(schoolCat, containerId) {
     // a module is on screen and comes back with the clear button below.
     const hintHtml = `
     <p class="modules-hint text-center">
-        <i class="fa fa-hand-pointer-o"></i> Click a module to reveal its details
+        <i class="fa fa-hand-pointer-o"></i> ${t('modules.hint', 'Click a module to reveal its details')}
     </p>
 `;
 
     // Combine and inject the HTML
     container.innerHTML = `
     <div class="modules-container">
-        <h4 class="text-center mb-2">Modules Studied</h4>${hintHtml}${filtersHtml}
+        <h4 class="text-center mb-2">${t('modules.title', 'Modules Studied')}</h4>${hintHtml}${filtersHtml}
         ${modulesHtml}
     </div>`;
 
@@ -159,7 +163,13 @@ jQuery(document).ready(function () {
     });
 
     // Render the modules when the document is ready
-    renderModules(SchoolCategory.UCM, 'ucm-modules-container');
-    renderModules(SchoolCategory.ENSEEIHT, 'enseeiht-modules-container');
-    renderModules(SchoolCategory.IUT, 'iut-modules-container');
+    function renderAllModules() {
+        renderModules(SchoolCategory.UCM, 'ucm-modules-container');
+        renderModules(SchoolCategory.ENSEEIHT, 'enseeiht-modules-container');
+        renderModules(SchoolCategory.IUT, 'iut-modules-container');
+    }
+
+    renderAllModules();
+    // Rebuilt from scratch on a language change, so the lists go back to their empty state.
+    I18N.onChange(renderAllModules);
 });

@@ -14,3 +14,47 @@ header.header-mobile:not(.menu-open) {
 header.header-mobile #mainmenu {
     top: 60px;
 }
+
+/* Language switch (EN / FR), in the bar next to the menu button. */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    border: solid 1px rgba(0, 0, 0, .15);
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.dark-scheme .lang-switch {
+    border-color: rgba(255, 255, 255, .2);
+}
+
+.lang-btn {
+    padding: 3px 11px;
+    border: none;
+    border-radius: 20px;
+    background: none;
+    color: #777;
+    font-family: var(--body-font);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+
+.lang-btn:hover {
+    color: var(--primary-color);
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* The bar is only 60px tall on a phone and the button sits right next to it. */
+header.header-mobile .lang-switch {
+    margin-right: 18px;
+}

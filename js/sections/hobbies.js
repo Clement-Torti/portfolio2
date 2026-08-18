@@ -23,7 +23,7 @@ function renderHobbies(category = HOBBIES_CATEGORIES.LANGUAGES) {
             const videoId = getYouTubeVideoId(hobby.videoUrl);
             if (videoId) {
                 hobbyCard.innerHTML = `
-            <div class="hobby-title">${hobby.title}</div>
+            <div class="hobby-title">${I18N.hobby(hobby.title)}</div>
             <div class="hobby-video">
                 <iframe 
                     src="https://www.youtube.com/embed/${videoId}" 
@@ -36,9 +36,9 @@ function renderHobbies(category = HOBBIES_CATEGORIES.LANGUAGES) {
             }
         } else if (hobby.imageFile) {
             hobbyCard.innerHTML = `
-        <div class="hobby-title">${hobby.title}</div>
+        <div class="hobby-title">${I18N.hobby(hobby.title)}</div>
         <div class="hobby-image">
-            <img src="images/hobbies/${hobby.imageFile}" alt="${hobby.title}" />
+            <img src="images/hobbies/${hobby.imageFile}" alt="${I18N.hobby(hobby.title)}" />
         </div>
     `;
         }
@@ -98,5 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderHobbies(); // Default to Languages
         initializeHobbiesFilters();
         initializeCarousel(); // NEW: Initialize carousel navigation
+
+        // Re-render the carousel in the new language, on the category currently selected.
+        I18N.onChange(() => {
+            const active = document.querySelector('.hobbies-filter-btn.active');
+            renderHobbies(active ? active.getAttribute('data-filter') : HOBBIES_CATEGORIES.LANGUAGES);
+        });
     }
 });
