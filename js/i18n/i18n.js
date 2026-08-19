@@ -11,6 +11,8 @@
 
 const I18N = (function () {
     const SUPPORTED = ['en', 'fr'];
+    // What a first-time visitor gets, before any choice of their own.
+    const DEFAULT_LANG = 'fr';
     const STORAGE_KEY = 'portfolio-lang';
 
     // Filled by the fr.js / fr-content.js dictionaries below this script.
@@ -23,7 +25,7 @@ const I18N = (function () {
 
     /**
      * Resolves the language to start in: an explicit ?lang= wins over the visitor's last
-     * choice, and anything unknown falls back to English.
+     * choice, and anything unknown falls back to DEFAULT_LANG.
      * @returns {string} One of SUPPORTED.
      */
     function initialLang() {
@@ -33,9 +35,9 @@ const I18N = (function () {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved && SUPPORTED.includes(saved)) return saved;
         } catch (e) {
-            // Private browsing can throw on access; English is a fine answer.
+            // Private browsing can throw on access; the default is a fine answer.
         }
-        return 'en';
+        return DEFAULT_LANG;
     }
 
     let lang = initialLang();

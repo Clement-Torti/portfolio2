@@ -17,13 +17,13 @@ I18N.registerUi('fr', {
     /* ---- Hero --------------------------------------------------------------------- */
     'hero.intro': 'Bonjour, je suis <span class="id-color">Clément Torti</span><br> je suis',
     'hero.title.fixed': 'Technical Lead & Software Engineer',
-    'hero.text': 'Passionné d\'informatique, j\'aime <b>explorer les nouvelles technologies</b> et concevoir des <b>écosystèmes d\'architecture soignés</b> qui servent les objectifs métier de l\'entreprise et apportent de la valeur aux produits. Guidé par la curiosité et l\'envie d\'apprendre en continu, je m\'adapte vite à <b>de nouveaux secteurs</b>. J\'aime <b>accompagner et faire grandir mon équipe</b> et entretenir un cadre collaboratif où l\'innovation et l\'amélioration continue font partie de la culture.',
+    'hero.text': 'Passionné d\'informatique, j\'aime <b>explorer les nouvelles technologies</b> et concevoir des <b>des architectures logicielles robustes</b> qui servent les objectifs métier de l\'entreprise et apportent de la valeur aux produits. Guidé par la curiosité et l\'envie d\'apprendre en continu, je m\'adapte vite à <b>de nouveaux secteurs</b>. J\'aime <b>accompagner et faire grandir mon équipe</b> et entretenir un cadre collaboratif et stimulant.',
     'hero.native': 'Français',
     'hero.degree': 'Diplôme d\'ingénieur',
     'hero.cv': 'Télécharger mon CV',
     'hero.cv.file': 'pdfs/CV_Francais.pdf',
     // Prefixed by the JS with the number of years, hence the leading space.
-    'hero.years': ' ans+ de programmation',
+    'hero.years': '+ ans de code',
 
     /* ---- What I do ---------------------------------------------------------------- */
     'services.title': 'Ce que je fais',

@@ -150,8 +150,9 @@
         font-size: .8rem;
     }
 
+    /* Padding rather than margin, see .expand-container in css/sections/portfolio.css. */
     .expand-container {
-        margin-top: 1.25rem;
+        padding-top: 1.25rem;
     }
 
     .show-more-btn {
