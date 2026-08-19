@@ -10,6 +10,21 @@
     margin-left: 40px;
 }
 
+/* "My Resume" and "About me" both carry the theme's 90px of section padding, and the last
+   timeline entry adds its own 40px, so 220px of blank space piled up between the end of the
+   timelines and the profile photo. css/base/responsive.css tightens this further on phones. */
+#section-resume {
+    padding-bottom: 30px;
+}
+
+#section-about {
+    padding-top: 50px;
+}
+
+#section-resume .d_timeline-item:last-child .d_timeline-text {
+    padding-bottom: 10px;
+}
+
 @media only screen and (max-width: 767px) {
 
     /* The indents stack up on a phone — 30px of container, the education column's
