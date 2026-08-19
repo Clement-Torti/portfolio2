@@ -25,6 +25,18 @@
     padding-bottom: 10px;
 }
 
+/* Two more layers of the same pile: the list's own margin and the 1.5rem the column pads
+   itself with through .p-md-4 / .p-4. */
+#section-resume .d_timeline {
+    margin-bottom: 0;
+}
+
+/* Bootstrap's spacing utilities are !important, so overriding them takes the same. */
+#section-resume .p-md-4,
+#section-resume .p-4 {
+    padding-bottom: 0 !important;
+}
+
 @media only screen and (max-width: 767px) {
 
     /* The indents stack up on a phone — 30px of container, the education column's
