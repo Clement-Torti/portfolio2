@@ -1,9 +1,37 @@
 /* Hero: the intro block and its "Download my CV" call to action. */
 
+/* The typed job title sits on the same line as the "I am a" lead-in and never wraps:
+   js/main.js shrinks the font of each title to whatever room is left on that line, then
+   fixes the row's width and height to the largest of them. Nothing therefore moves while a
+   title is being typed or deleted. */
+.typed-title {
+    --typed-max-size: 40px;
+    /* inline-block left on the default baseline alignment: the title then sits on the very
+       same baseline as the "I am a" it follows, rather than being centred against it. Its
+       line-height is kept equal to its reserved height (js/main.js sets both), so the text is
+       centred inside the box it reserves. */
+    display: inline-block;
+    height: calc(var(--typed-max-size) * 1.2);
+    line-height: calc(var(--typed-max-size) * 1.2);
+    white-space: nowrap;
+}
+
 /* The button used to carry Bootstrap's mt-5; the wrapper owns the spacing now so
    the mobile rules below can also centre it. */
 .hero-cta {
     margin-top: 3rem;
+}
+
+/* A bit of relief under the CV button, in the same register as the portfolio's "show more".
+   The theme already swaps in a coloured glow on hover, so this is the resting state only —
+   and no lift on hover: .wow keeps its animation transform, which would win over one here. */
+.hero-cta .btn-main {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+    transition: box-shadow .3s ease;
+}
+
+.hero-cta .btn-main:hover {
+    box-shadow: 0 10px 26px rgba(var(--primary-color-rgb), .55);
 }
 
 @media only screen and (max-width: 767px) {
@@ -39,15 +67,15 @@
     }
 
     /* 40px comes from an inline style meant for the desktop column. */
-    #hero .fix-title {
+    #hero .moving-title {
         font-size: 30px !important;
         line-height: 1.15;
     }
 
-    /* The job title is the longest line of the three, so it goes smaller still. */
-    #hero .fix-title p {
-        font-size: 22px;
-        line-height: 1.2;
+    /* Ceiling for the typed titles, and so the reserved height, on a narrow column: the
+       script scales each title down from here as needed. */
+    #hero .typed-title {
+        --typed-max-size: 24px;
         margin-top: 2px;
     }
 

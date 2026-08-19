@@ -15,8 +15,7 @@ I18N.registerUi('fr', {
     'nav.aria': 'Langue',
 
     /* ---- Hero --------------------------------------------------------------------- */
-    'hero.intro': 'Bonjour, je suis <span class="id-color">Clément Torti</span><br> je suis',
-    'hero.title.fixed': 'Technical Lead & Software Engineer',
+    'hero.intro': 'Bonjour,<br> je suis <span class="id-color">Clément Torti</span>.<br> Je suis',
     'hero.text': 'Passionné d\'informatique, j\'aime <b>explorer les nouvelles technologies</b> et concevoir des <b>des architectures logicielles robustes</b> qui servent les objectifs métier de l\'entreprise et apportent de la valeur aux produits. Guidé par la curiosité et l\'envie d\'apprendre en continu, je m\'adapte vite à <b>de nouveaux secteurs</b>. J\'aime <b>accompagner et faire grandir mon équipe</b> et entretenir un cadre collaboratif et stimulant.',
     'hero.native': 'Français',
     'hero.degree': 'Diplôme d\'ingénieur',
@@ -80,6 +79,8 @@ I18N.registerUi('fr', {
     'resume.experience': 'Expérience',
     'resume.education': 'Formation',
     'resume.missions': 'Missions :',
+    'resume.missions.show': 'Voir les missions',
+    'resume.missions.hide': 'Masquer les missions',
 
     'resume.transneg2.date': 'déc. 2025 - déc. 2026',
     'resume.transneg2.role': 'System Team Manager Jr.',

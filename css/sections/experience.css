@@ -43,3 +43,42 @@
         margin-left: 15px;
     }
 }
+
+/* Collapsible mission lists, built by js/sections/experience.js. The button only exists on
+   phones: above 767px the missions read as part of the job description, as before. */
+.missions-toggle {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .missions.is-collapsed {
+        display: none;
+    }
+
+    .missions-toggle {
+        /* Block, so it always starts a line of its own: as an inline button it tucked in at
+           the end of the summary whenever that last line had room for it. fit-content keeps
+           the pill as wide as its label. */
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 12px;
+        padding: 5px 14px;
+        border: solid 1px var(--primary-color);
+        border-radius: 20px;
+        background: none;
+        color: var(--primary-color);
+        font-family: var(--body-font);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.6;
+        cursor: pointer;
+    }
+
+    .missions-toggle:hover,
+    .missions-toggle[aria-expanded="true"] {
+        background: var(--primary-color);
+        color: #fff;
+    }
+}

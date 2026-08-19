@@ -124,20 +124,8 @@ function renderModules(schoolCat, containerId) {
     }
 }
 jQuery(document).ready(function () {
-    $(function () {
-        // jquery typed plugin
-        $(".typed").typed({
-            stringsElement: $('.typed-strings'),
-            typeSpeed: 100,
-            backDelay: 500,
-            loop: true,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function () { null; },
-            resetCallback: function () { newTyped(); }
-        });
-    });
+    // The typing headline is set up once, in js/main.js — it used to be started here too,
+    // which left two plugin instances writing into the same element.
 
     // Your existing accordion logic
     document.querySelectorAll(".accordion-section-title").forEach((accordionTitle) => {

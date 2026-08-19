@@ -126,20 +126,12 @@
     color: #aaa;
 }
 
-.fix-title {
-    display: none !important;
-}
-
 @media (max-width: 767.98px) {
 
+    /* Far too much reading for a phone: the schools keep their description only. */
     #ucm-modules-container,
     #iut-modules-container,
-    #enseeiht-modules-container,
-    .moving-title {
+    #enseeiht-modules-container {
         display: none !important;
-    }
-
-    .fix-title {
-        display: block !important;
     }
 }

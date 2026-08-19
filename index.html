@@ -121,24 +121,17 @@
                             <div class="spacer-10"></div>
                             <div class="h1 wow fadeInUp .medium-screen moving-title" style="font-size: 40px;"
                                 data-wow-delay=".6s">
-                                <span data-i18n-html="hero.intro">Hi, I am <span class="id-color">Clément
-                                        Torti</span><br> I am a</span>
+                                <span data-i18n-html="hero.intro">Hi,<br> I am <span class="id-color">Clément
+                                        Torti</span>.<br> I am a</span>
                                 <div class="typed-strings">
                                     <p>Technical Lead</p>
                                     <p>Software Engineer</p>
-                                    <p>DevOps Engineer</p>
-                                    <p>Cloud Architect</p>
                                 </div>
-                                <div class="typed"></div>
-                            </div>
-
-                            <div class="h1 wow fadeInUp .medium-screen fix-title" style="font-size: 40px;"
-                                data-wow-delay=".6s">
-                                <span data-i18n-html="hero.intro">Hi, I am <span class="id-color">Clément
-                                        Torti</span><br> I am a</span>
-                                <div class="">
-                                    <p data-i18n="hero.title.fixed">Technical Lead & Software Engineer</p>
-                                </div>
+                                <!-- Reserved width and height, so the typing never rewraps the
+                                     page. Sized per title by js/main.js. -->
+                                <span class="typed-title">
+                                    <span class="typed"></span>
+                                </span>
                             </div>
 
                             <p style="text-align: justify; line-height: 1.5;" class="wow fadeInUp" data-wow-delay=".6s"
@@ -330,7 +323,7 @@
                                             <span data-i18n-html="resume.transneg2.text">
                                                 Role evolution: continuation of senior engineering work with added team
                                                 leadership, broader infrastructure scope, and closer involvement with
-                                                product and client discussions.<br /><br />
+                                                product and client discussions.<br />
 
                                                 <i>Missions:</i><br />
                                                 - Supervise a small team of developers: assign tasks, offer technical
@@ -828,6 +821,7 @@
     <!-- Section behaviour -->
     <script src="js/sections/portfolio.js"></script>
     <script src="js/sections/education.js"></script>
+    <script src="js/sections/experience.js"></script>
     <script src="js/sections/hobbies.js"></script>
     <script src="js/main.js"></script>
 </body>
