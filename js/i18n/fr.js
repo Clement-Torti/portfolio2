@@ -83,7 +83,7 @@ I18N.registerUi('fr', {
     'resume.missions.hide': 'Masquer les missions',
 
     'resume.transneg2.date': 'déc. 2025 - déc. 2026',
-    'resume.transneg2.role': 'System Team Manager Jr.',
+    'resume.transneg2.role': 'Sr. Developer & Team Lead',
     'resume.transneg2.company': 'Transneg Saint-Domingue, République dominicaine',
     'resume.transneg2.text': 'Évolution de poste : continuité de mon rôle d\'ingénieur senior, avec en plus l\'encadrement d\'une équipe de développeurs, un périmètre élargi à l\'architecture complète et une implication accrue dans les décisions stratégiques.<br /><br />\n\n<i>Missions :</i><br />\n- Encadrer une petite équipe de développeurs : répartir les tâches, apporter une expertise technique, animer les réunions hebdomadaires et assurer la continuité des livraisons.<br />\n\n- Continuer à intervenir directement sur le codesur les systèmes backend et les APIs, en contribuant à la conception, à la maintenance et à l\'évolution des systèmes de paiement et BPM.<br />\n\n- Intervenir plus tôt dans le cadrage des projets et les échanges clients, pour clarifier les besoins et les traduire en actions techniques.<br />\n\n- Charger de l\'infrastructure AWS et on-premise, en accompagnant les déploiements et assurant la disponibilité des services.<br />',
 
