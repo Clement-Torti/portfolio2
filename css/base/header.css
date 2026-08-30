@@ -31,6 +31,9 @@ header.header-mobile #mainmenu {
 }
 
 .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 3px 11px;
     border: none;
     border-radius: 20px;
@@ -45,8 +48,25 @@ header.header-mobile #mainmenu {
     transition: background .2s ease, color .2s ease;
 }
 
+/* Only the selected flag keeps its colours, so the switch reads at a glance. */
+.lang-btn img {
+    display: block;
+    width: 18px;
+    height: auto;
+    border-radius: 2px;
+    filter: grayscale(1);
+    opacity: .6;
+    transition: filter .2s ease, opacity .2s ease;
+}
+
 .lang-btn:hover {
     color: var(--primary-color);
+}
+
+.lang-btn:hover img,
+.lang-btn.active img {
+    filter: none;
+    opacity: 1;
 }
 
 .lang-btn.active {
